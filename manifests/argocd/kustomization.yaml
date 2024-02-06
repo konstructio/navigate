@@ -5,12 +5,12 @@ namespace: argocd
 # To upgrade ArgoCD, increment the version here
 # https://github.com/argoproj/argo-cd/tags
 resources:
-  - https://github.com/argoproj/argo-cd.git/manifests/cluster-install?ref=v2.9.6&timeout=90s
-  - argocd-namespace.yaml
+- https://github.com/argoproj/argo-cd.git/manifests/cluster-install?ref=v2.9.6&timeout=90s
+- argocd-namespace.yaml
 
-patchesStrategicMerge:
-  - argocd-cm.yaml
-  - argocd-cmd-params-cm.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
+patches:
+- path: argocd-cm.yaml
+- path: argocd-cmd-params-cm.yaml
