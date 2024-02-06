@@ -1,2 +1,3 @@
 # navigate
-Civo Navigate Workshops
+
+CIVO Navigate Workshops
