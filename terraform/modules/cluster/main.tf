@@ -1,4 +1,4 @@
-# ##! remove for development
+# ##! uncomment this block to run terraform locally
 # terraform {
 #   backend "kubernetes" {
 #     secret_suffix     = "providerconfig-civo-nyc1"
@@ -19,7 +19,7 @@
 # provider "civo" {
 #   region = "nyc1"
 # }
-# ##! remove for development
+# ##! uncomment this block to run terraform locally
 
 
 resource "civo_network" "cluster" {
