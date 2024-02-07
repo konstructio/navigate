@@ -43,11 +43,14 @@ resource "civo_kubernetes_cluster" "cluster" {
   }
 }
 
+provider "kubernetes" {} # alias = "in-cluster" 
+
 # provider "kubernetes" {
 #   host                   = civo_kubernetes_cluster.cluster.api_endpoint
 #   client_certificate     = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data)
 #   client_key             = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-key-data)
 #   cluster_ca_certificate = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).clusters[0].cluster.certificate-authority-data)
+#   alias = "target"
 # }
 
 # resource "kubernetes_cluster_role_v1" "argocd_manager" {
@@ -111,13 +114,19 @@ resource "civo_kubernetes_cluster" "cluster" {
 #   }
 # }
 
-# # resource "kubernetes_secret_v1" "crossplane_system" {
-# #   metadata {
-# #     name      = "external-dns-secrets"
-# #     namespace = kubernetes_namespace_v1.crossplane_system.metadata.0.name
-# #   }
-# #   data = {
-# #     token = #! data here needs to come from in cluster
-# #   }
-# #   type = "Opaque"
-# # }
+resource "kubernetes_secret_v1" "crossplane_system" {
+  metadata {
+    name      = "tf--argocd-cluster-secrets"
+    namespace = "default"
+  }
+  data = {
+    bearerToken = "any old string"
+    token2 = {
+      caData = "any old string"
+      certData  = "Opaque"
+      insecure  = "Opaque"
+      keyData  = "Opaque"
+    }
+  }
+  type = "Opaque"
+}
