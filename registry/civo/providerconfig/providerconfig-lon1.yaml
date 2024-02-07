@@ -12,15 +12,6 @@ spec:
           namespace         = "crossplane-system"
           in_cluster_config = true
         }
-        required_providers {
-          civo = {
-            source = "civo/civo"
-          }
-          kubernetes = {
-            source = "hashicorp/kubernetes"
-            version = "2.23.0"
-          }
-        }
       }
       provider "civo" {
         region = "lon1"
