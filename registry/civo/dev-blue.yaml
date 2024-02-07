@@ -1,0 +1,21 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: Workspace
+metadata:
+  name: dev-blue-infrastructure
+spec:
+  providerConfigRef: 
+    name: dev-blue
+  forProvider:
+    source: Remote
+    module: git::https://github.com/kubefirst/navigate.git//terraform/modules/cluster?ref=main
+    vars:
+    - key: cluster_name
+      value: dev-blue
+    - key: cluster_region
+      value: nyc1
+    - key: environment
+      value: dev-blue
+    - key: node_type
+      value: "g4s.kube.medium"
+    - key: node_count
+      value: "3"
