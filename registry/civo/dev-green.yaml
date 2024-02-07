@@ -4,7 +4,7 @@ metadata:
   name: dev-green-infrastructure
 spec:
   providerConfigRef: 
-    name: dev-green
+    name: dev-blue
   forProvider:
     source: Remote
     module: git::https://github.com/kubefirst/navigate.git//terraform/modules/cluster?ref=main
