@@ -32,22 +32,6 @@ resource "civo_kubernetes_cluster" "cluster" {
   }
 }
 
-resource "vault_generic_secret" "clusters" {
-  path = "secret/clusters/${var.cluster_name}"
-
-  data_json = jsonencode(
-    {
-      kubeconfig              = civo_kubernetes_cluster.cluster.kubeconfig
-      client_certificate      = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data)
-      client_key              = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-key-data)
-      cluster_ca_certificate  = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).clusters[0].cluster.certificate-authority-data)
-      host                    = civo_kubernetes_cluster.cluster.api_endpoint
-      cluster_name            = var.cluster_name
-      argocd_manager_sa_token = kubernetes_secret_v1.argocd_manager.data.token
-    }
-  )
-}
-
 provider "kubernetes" {
   host                   = civo_kubernetes_cluster.cluster.api_endpoint
   client_certificate     = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data)
