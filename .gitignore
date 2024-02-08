@@ -1,7 +1,8 @@
 .terraform*
 .terraform/
 terraform.*
-cluster-secret.yaml
 tf/
 tf-dev-blue/
 tf-dev-green/
+dev-blue-secret.yaml
+dev-green-secret.yaml
