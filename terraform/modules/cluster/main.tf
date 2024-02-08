@@ -48,7 +48,6 @@ provider "kubernetes" {
   client_certificate     = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data)
   client_key             = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-key-data)
   cluster_ca_certificate = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).clusters[0].cluster.certificate-authority-data)
-  alias = "target"
 }
 resource "kubernetes_cluster_role_v1" "argocd_manager" {
   metadata {
