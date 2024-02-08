@@ -134,9 +134,23 @@ resource "kubernetes_secret_v1" "argocd_cluster_secret" {
   metadata {
     name      = var.cluster_name
     namespace = "argocd"
+    labels = {
+      "argocd.argoproj.io/secret-type" = "cluster"
+    }
   }
   data = {
-    token = "weeeeeee"
+    name : var.cluster_name
+    server : civo_kubernetes_cluster.cluster.api_endpoint
+    clusterResources : "true"
+    config = jsonencode({ 
+      bearerToken = kubernetes_secret_v1.argocd_manager.data.token
+      tlsClientConfig = {
+        insecure = "false",
+        caData   = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data)
+        certData = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-key-data)
+        keyData  = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).clusters[0].cluster.certificate-authority-data)
+      }
+    })
   }
   type = "Opaque"
 }
