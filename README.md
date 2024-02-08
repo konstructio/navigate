@@ -13,7 +13,7 @@ kubectl create ns crossplane-system
 export CIVO_TOKEN
 kubectl -n crossplane-system create secret generic crossplane-secrets --from-literal=CIVO_TOKEN=$CIVO_TOKEN --from-literal=TF_VAR_civo_token=$CIVO_TOKEN
 
-kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/bootstrap/bootstrap.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
 
-kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/registry/registry.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry/registry.yaml
 ```
