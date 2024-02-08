@@ -8,7 +8,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: '30'
 spec:
-  project: dev-blue
+  project: default
   source:
     repoURL: https://kubernetes.github.io/ingress-nginx
     targetRevision: 4.9.1
