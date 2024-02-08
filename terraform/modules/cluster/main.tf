@@ -1,24 +1,24 @@
 # ##! uncomment this block to run terraform locally
-# terraform {
-#   backend "kubernetes" {
-#     secret_suffix     = "providerconfig-civo-nyc1"
-#     namespace         = "crossplane-system"
-#     # in_cluster_config = true
-#     config_path       = "~/.navigate-kubeconfig"
-#   }
-#   required_providers {
-#     civo = {
-#       source = "civo/civo"
-#     }
-#     kubernetes = {
-#       source = "hashicorp/kubernetes"
-#       version = "2.23.0"
-#     }
-#   }
-# }
-# provider "civo" {
-#   region = "nyc1"
-# }
+terraform {
+  backend "kubernetes" {
+    secret_suffix     = "providerconfig-civo-nyc1"
+    namespace         = "crossplane-system"
+    # in_cluster_config = true
+    config_path       = "~/.navigate-kubeconfig"
+  }
+  required_providers {
+    civo = {
+      source = "civo/civo"
+    }
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+      version = "2.23.0"
+    }
+  }
+}
+provider "civo" {
+  region = "nyc1"
+}
 # ##! uncomment this block to run terraform locally
 
 
@@ -43,7 +43,9 @@ resource "civo_kubernetes_cluster" "cluster" {
   }
 }
 
-provider "kubernetes" {} # alias = "in-cluster" 
+provider "kubernetes" {
+  config_path = "~/.navigate-kubeconfig"
+}
 
 # provider "kubernetes" {
 #   host                   = civo_kubernetes_cluster.cluster.api_endpoint
@@ -114,19 +116,19 @@ provider "kubernetes" {} # alias = "in-cluster"
 #   }
 # }
 
-resource "kubernetes_secret_v1" "crossplane_system" {
-  metadata {
-    name      = "tf--argocd-cluster-secrets"
-    namespace = "default"
-  }
-  data = {
-    bearerToken = "any old string"
-    token2 = {
-      caData = "any old string"
-      certData  = "Opaque"
-      insecure  = "Opaque"
-      keyData  = "Opaque"
-    }
-  }
-  type = "Opaque"
-}
+# resource "kubernetes_secret_v1" "crossplane_system" {
+#   metadata {
+#     name      = "tf-argocd-cluster-secrets"
+#     namespace = "default"
+#   }
+#   data = {
+#     bearerToken = "any old string"
+#     tlsClientConfig = jsonencode({
+#       caData = "any old string"
+#       certData  = "Opaque"
+#       insecure  = "Opaque"
+#       keyData  = "Opaque"
+#     })
+#   }
+#   type = "Opaque"
+# }
