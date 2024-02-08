@@ -15,4 +15,6 @@ kubectl -n crossplane-system create secret generic crossplane-secrets --from-lit
 
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/bootstrap/bootstrap.yaml
 
+kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/registry/registry.yaml
+
 ```
