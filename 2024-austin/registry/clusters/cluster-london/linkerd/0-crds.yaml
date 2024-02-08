@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:kgetpods-biz/gitops.git
+    repoURL: https://github.com/kubefirst/navigate
     path: 2024-austin/registry/clusters/cluster-london/linkerd/components/crds
     targetRevision: HEAD
   destination:
