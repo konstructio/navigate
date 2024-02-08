@@ -8,7 +8,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: cluster-newyork
+  project: default
   source:
     chart: linkerd-crds
     repoURL: https://helm.linkerd.io/stable

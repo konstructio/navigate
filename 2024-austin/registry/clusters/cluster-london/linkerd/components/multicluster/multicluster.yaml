@@ -8,7 +8,7 @@
 #   finalizers:
 #   - resources-finalizer.argocd.argoproj.io
 # spec:
-#   project: cluster-london
+#   project: default
 #   source:
 #     chart: linkerd-multicluster
 #     repoURL: https://helm.linkerd.io/stable
