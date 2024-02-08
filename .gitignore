@@ -4,3 +4,4 @@ terraform.*
 cluster-secret.yaml
 tf/
 tf-dev-blue/
+tf-dev-green/
