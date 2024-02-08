@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kubefirst/navigate.git
-    path: registry/clusters/cluster-london/providerconfig
+    path: 2024-austin/registry/clusters/cluster-london/providerconfig
     targetRevision: HEAD
   destination:
     name: in-cluster
