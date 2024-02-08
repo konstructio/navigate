@@ -1,0 +1,177 @@
+apiVersion: v1
+data:
+  kubeconfig: YXBpVmVyc2lvbjogdjEKY2x1c3RlcnM6Ci0gY2x1c3RlcjoKICAgIGNlcnRpZmljYXRlLWF1dGhvcml0eS1kYXRhOiBMUzB0TFMxQ1JVZEpUaUJEUlZKVVNVWkpRMEZVUlMwdExTMHRDazFKU1VKa2VrTkRRVkl5WjBGM1NVSkJaMGxDUVVSQlMwSm5aM0ZvYTJwUFVGRlJSRUZxUVdwTlUwVjNTSGRaUkZaUlVVUkVRbWh5VFROTmRHTXlWbmtLWkcxV2VVeFhUbWhSUkVVeVQxUkpkMDVVUlRGUFJGbDNTR2hqVGsxcVRYZFBSRVV3VFdwSmVFOVVVVEpYYUdOT1RYcE5kMDlFUlhoTmFrbDRUMVJSTWdwWGFrRnFUVk5GZDBoM1dVUldVVkZFUkVKb2NrMHpUWFJqTWxaNVpHMVdlVXhYVG1oUlJFVXlUMVJKZDA1VVJURlBSRmwzVjFSQlZFSm5ZM0ZvYTJwUENsQlJTVUpDWjJkeGFHdHFUMUJSVFVKQ2QwNURRVUZTVlhCNldIQkRXblpxY1c1Q1NtMXRRemRXYkc5T2RsbDVNbmRJZVd4M2RrUlpSVGR0UVd0eWVqa0tUa3BZZGpkbGMyeG5VMFEzVWtwb2VVMHlXV1J1UlVKTFRWWk9UWEozVmpCTmExQldaVmxhZW1wcVNteHZNRWwzVVVSQlQwSm5UbFpJVVRoQ1FXWTRSUXBDUVUxRFFYRlJkMFIzV1VSV1VqQlVRVkZJTDBKQlZYZEJkMFZDTDNwQlpFSm5UbFpJVVRSRlJtZFJWWFJtVUdST1IyMHlUbHBrVkhoemFFRjRaM3BUQ21wUGRsVXJiMFYzUTJkWlNVdHZXa2w2YWpCRlFYZEpSRk5CUVhkU1VVbG9RVkJrTTBKTUswNUVURzUwSzJwS2RqaGtURFZVVVVsdVJXTmFZVXR4ZVVFS1dXbzFNR0YxWlcxWVJVaENRV2xCZVdsNVQwWldiU3M1VmpKSFowOHdURFJLYjFJdmFGQTVjMGRVSzJsd01HOUJTR2R4VVdneVIxQlZRVDA5Q2kwdExTMHRSVTVFSUVORlVsUkpSa2xEUVZSRkxTMHRMUzBLCiAgICBzZXJ2ZXI6IGh0dHBzOi8vNzQuMjIwLjE4LjEwMDo2NDQzCiAgbmFtZTogbGlua2VyZC1ibGFjawpjb250ZXh0czoKLSBjb250ZXh0OgogICAgY2x1c3RlcjogbGlua2VyZC1ibGFjawogICAgdXNlcjogbGlua2VyZC1zZXJ2aWNlLW1pcnJvci1yZW1vdGUtYWNjZXNzLWRlZmF1bHQKICBuYW1lOiBsaW5rZXJkLWJsYWNrCmN1cnJlbnQtY29udGV4dDogbGlua2VyZC1ibGFjawpraW5kOiBDb25maWcKcHJlZmVyZW5jZXM6IHt9CnVzZXJzOgotIG5hbWU6IGxpbmtlcmQtc2VydmljZS1taXJyb3ItcmVtb3RlLWFjY2Vzcy1kZWZhdWx0CiAgdXNlcjoKICAgIHRva2VuOiBleUpoYkdjaU9pSlNVekkxTmlJc0ltdHBaQ0k2SWtkd1IyeHVaM1o0UkhoT1kzTmtjRzFqZWtWZldWaDFaR1JPYVU0elVVdFJjaTF3T0V3MlNtbGlaa2tpZlEuZXlKcGMzTWlPaUpyZFdKbGNtNWxkR1Z6TDNObGNuWnBZMlZoWTJOdmRXNTBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5dVlXMWxjM0JoWTJVaU9pSnNhVzVyWlhKa0xXMTFiSFJwWTJ4MWMzUmxjaUlzSW10MVltVnlibVYwWlhNdWFXOHZjMlZ5ZG1salpXRmpZMjkxYm5RdmMyVmpjbVYwTG01aGJXVWlPaUpzYVc1clpYSmtMWE5sY25acFkyVXRiV2x5Y205eUxYSmxiVzkwWlMxaFkyTmxjM010WkdWbVlYVnNkQzEwYjJ0bGJpSXNJbXQxWW1WeWJtVjBaWE11YVc4dmMyVnlkbWxqWldGalkyOTFiblF2YzJWeWRtbGpaUzFoWTJOdmRXNTBMbTVoYldVaU9pSnNhVzVyWlhKa0xYTmxjblpwWTJVdGJXbHljbTl5TFhKbGJXOTBaUzFoWTJObGMzTXRaR1ZtWVhWc2RDSXNJbXQxWW1WeWJtVjBaWE11YVc4dmMyVnlkbWxqWldGalkyOTFiblF2YzJWeWRtbGpaUzFoWTJOdmRXNTBMblZwWkNJNklqQmlObVUwWldZeUxXWmlNMll0TkRVek5pMWlaalU0TFdNMFl6a3pZV0pqWldKaVlTSXNJbk4xWWlJNkluTjVjM1JsYlRwelpYSjJhV05sWVdOamIzVnVkRHBzYVc1clpYSmtMVzExYkhScFkyeDFjM1JsY2pwc2FXNXJaWEprTFhObGNuWnBZMlV0YldseWNtOXlMWEpsYlc5MFpTMWhZMk5sYzNNdFpHVm1ZWFZzZENKOS5XVjMyLWs2UzJxX2xrN0ZiRkQxTnl4UnAwRTQ0YV9oWUVGZVBOVGRDQm82UGlNQUQ0WnNObHMtSXpZZ0V2QTZmVWdMclNKSnVNN3FfaEFWZ2dPOURMTTVwUVl2ZHpSY2tLRTJ3UDhsbHFtU1QwLTBac0pULTJDQjBvVzNnaENocnNPSGRGZW94V21xMDc1eGVHR3U5N2VYb3g0dFNQUm1hbzl1eEh1bVRDVXRyZ1dmZVAzQkhtRDIzUXhSRW56UHZoRGh5a08yeThCUk9rNGZTeEVBenpZdFBRdm9YSGdKTDR1N2NnZ3dDYWFDUHZhZmVBeVRZcXAzSHhEQXdLeEREMEdaOUp4eVFTTXdjcXhDS2J5OHhpdi16cjRveFVCYVJYanN1d2xFNTJfaHFUQklZaHBNTG9mUXpScXZGUWtKazdRZHNMMDJRNzJnVkV3RUQ4ZTJMWFEK
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: cluster-credentials-cluster-london
+  namespace: linkerd-multicluster
+type: mirror.linkerd.io/remote-kubeconfig
+---
+apiVersion: multicluster.linkerd.io/v1alpha1
+kind: Link
+metadata:
+  name: cluster-london
+  namespace: linkerd-multicluster
+spec:
+  clusterCredentialsSecret: cluster-credentials-cluster-london
+  gatewayAddress: 74.220.21.90
+  gatewayIdentity: linkerd-gateway.linkerd-multicluster.serviceaccount.identity.linkerd.cluster.local
+  gatewayPort: "4143"
+  probeSpec:
+    path: /ready
+    period: 3s
+    port: "4191"
+  selector:
+    matchLabels:
+      mirror.linkerd.io/exported: "true"
+  targetClusterDomain: cluster.local
+  targetClusterLinkerdNamespace: linkerd
+  targetClusterName: cluster-london
+---
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: linkerd-service-mirror-access-local-resources-cluster-london
+  labels:
+    linkerd.io/extension: multicluster
+    component: service-mirror
+    mirror.linkerd.io/cluster-name: cluster-london
+rules:
+- apiGroups: [""]
+  resources: ["endpoints", "services"]
+  verbs: ["list", "get", "watch", "create", "delete", "update"]
+- apiGroups: [""]
+  resources: ["namespaces"]
+  verbs: ["list", "get", "watch"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: linkerd-service-mirror-access-local-resources-cluster-london
+  labels:
+    linkerd.io/extension: multicluster
+    component: service-mirror
+    mirror.linkerd.io/cluster-name: cluster-london
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: linkerd-service-mirror-access-local-resources-cluster-london
+subjects:
+- kind: ServiceAccount
+  name: linkerd-service-mirror-cluster-london
+  namespace: linkerd-multicluster
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: linkerd-service-mirror-read-remote-creds-cluster-london
+  namespace: linkerd-multicluster
+  labels:
+    linkerd.io/extension: multicluster
+    component: service-mirror
+    mirror.linkerd.io/cluster-name: cluster-london
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    resourceNames: ["cluster-credentials-cluster-london"]
+    verbs: ["list", "get", "watch"]
+  - apiGroups: ["multicluster.linkerd.io"]
+    resources: ["links"]
+    verbs: ["list", "get", "watch"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: linkerd-service-mirror-read-remote-creds-cluster-london
+  namespace: linkerd-multicluster
+  labels:
+    linkerd.io/extension: multicluster
+    component: service-mirror
+    mirror.linkerd.io/cluster-name: cluster-london
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: linkerd-service-mirror-read-remote-creds-cluster-london
+subjects:
+  - kind: ServiceAccount
+    name: linkerd-service-mirror-cluster-london
+    namespace: linkerd-multicluster
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: linkerd-service-mirror-cluster-london
+  namespace: linkerd-multicluster
+  labels:
+    linkerd.io/extension: multicluster
+    component: service-mirror
+    mirror.linkerd.io/cluster-name: cluster-london
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    linkerd.io/extension: multicluster
+    component: service-mirror
+    mirror.linkerd.io/cluster-name: cluster-london
+  name: linkerd-service-mirror-cluster-london
+  namespace: linkerd-multicluster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: linkerd-service-mirror
+      mirror.linkerd.io/cluster-name: cluster-london
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+        config.alpha.linkerd.io/proxy-wait-before-exit-seconds: "0"
+      labels:
+        component: linkerd-service-mirror
+        mirror.linkerd.io/cluster-name: cluster-london
+    spec:
+      containers:
+      - args:
+        - service-mirror
+        - -log-level=info
+        - -event-requeue-limit=3
+        - -namespace=linkerd-multicluster
+        - -enable-pprof=false
+        - cluster-london
+        image: cr.l5d.io/linkerd/controller:stable-2.13.6
+        name: service-mirror
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 2103
+          seccompProfile:
+            type: RuntimeDefault
+        ports:
+        - containerPort: 9999
+          name: admin-http
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      serviceAccountName: linkerd-service-mirror-cluster-london
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: probe-gateway-cluster-london
+  namespace: linkerd-multicluster
+  labels:
+    mirror.linkerd.io/mirrored-gateway: "true"
+    mirror.linkerd.io/cluster-name: cluster-london
+spec:
+  ports:
+  - name: mc-probe
+    port: 4191
+    protocol: TCP
+---

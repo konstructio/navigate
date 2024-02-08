@@ -22,3 +22,9 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 
 # watch the glory
 ```
+
+
+
+linkerd addition notes:
+- need to remove certs from 2024-austin/registry/clusters/cluster-london/linkerd/components/control-plane/control-plane.yaml
+- upgrade linkerd
