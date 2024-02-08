@@ -139,15 +139,15 @@ resource "kubernetes_secret_v1" "argocd_cluster_secret" {
     }
   }
   data = {
-    name : var.cluster_name
-    server : civo_kubernetes_cluster.cluster.api_endpoint
-    clusterResources : "true"
+    name = var.cluster_name
+    server = civo_kubernetes_cluster.cluster.api_endpoint
+    clusterResources = "true"
     config = jsonencode({ 
       bearerToken = kubernetes_secret_v1.argocd_manager.data.token
       tlsClientConfig = {
         insecure = "false",
-        caData   = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data
-        certData = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-key-data
+        caData   = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data,
+        certData = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-key-data,
         keyData  = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).clusters[0].cluster.certificate-authority-data
       }
     })
