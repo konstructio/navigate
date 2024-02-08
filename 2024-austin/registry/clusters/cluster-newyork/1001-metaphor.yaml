@@ -1,0 +1,27 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: cluster-newyork-metaphor-development
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+#   annotations:
+#     argocd.argoproj.io/sync-wave: '10'
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://github.com/kubefirst/navigate
+#     path: 2024-austin/registry/apps/development/metaphor
+#     targetRevision: HEAD
+#     helm:
+#       valueFiles:
+#         - cluster-newyork-values.yaml
+#   destination:
+#     name: cluster-newyork
+#     namespace: development
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
