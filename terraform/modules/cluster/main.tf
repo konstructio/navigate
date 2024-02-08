@@ -44,91 +44,84 @@ resource "civo_kubernetes_cluster" "cluster" {
 }
 
 provider "kubernetes" {
-  config_path = "~/.navigate-kubeconfig"
+  host                   = civo_kubernetes_cluster.cluster.api_endpoint
+  client_certificate     = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data)
+  client_key             = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-key-data)
+  cluster_ca_certificate = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).clusters[0].cluster.certificate-authority-data)
+  alias = "target"
+}
+resource "kubernetes_cluster_role_v1" "argocd_manager" {
+  metadata {
+    name = "argocd-manager-role"
+  }
+
+  rule {
+    api_groups = ["*"]
+    resources  = ["*"]
+    verbs      = ["*"]
+  }
+  rule {
+    non_resource_urls = ["*"]
+    verbs             = ["*"]
+  }
 }
 
-# provider "kubernetes" {
-#   host                   = civo_kubernetes_cluster.cluster.api_endpoint
-#   client_certificate     = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data)
-#   client_key             = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-key-data)
-#   cluster_ca_certificate = base64decode(yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).clusters[0].cluster.certificate-authority-data)
-#   alias = "target"
-# }
 
-# resource "kubernetes_cluster_role_v1" "argocd_manager" {
-#   metadata {
-#     name = "argocd-manager-role"
-#   }
+resource "kubernetes_cluster_role_binding_v1" "argocd_manager" {
+  metadata {
+    name = "argocd-manager-role-binding"
+  }
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "ClusterRole"
+    name      = kubernetes_cluster_role_v1.argocd_manager.metadata.0.name
+  }
+  subject {
+    kind      = "ServiceAccount"
+    name      = kubernetes_service_account_v1.argocd_manager.metadata.0.name
+    namespace = "kube-system"
+  }
+}
 
-#   rule {
-#     api_groups = ["*"]
-#     resources  = ["*"]
-#     verbs      = ["*"]
-#   }
-#   rule {
-#     non_resource_urls = ["*"]
-#     verbs             = ["*"]
-#   }
-# }
+resource "kubernetes_service_account_v1" "argocd_manager" {
+  metadata {
+    name      = "argocd-manager"
+    namespace = "kube-system"
+  }
+  secret {
+    name = "argocd-manager-token"
+  }
+}
 
+resource "kubernetes_secret_v1" "argocd_manager" {
+  metadata {
+    name      = "argocd-manager-token"
+    namespace = "kube-system"
+    annotations = {
+      "kubernetes.io/service-account.name" = "argocd-manager"
+    }
+  }
+  type       = "kubernetes.io/service-account-token"
+  depends_on = [kubernetes_service_account_v1.argocd_manager]
+}
 
-# resource "kubernetes_cluster_role_binding_v1" "argocd_manager" {
-#   metadata {
-#     name = "argocd-manager-role-binding"
-#   }
-#   role_ref {
-#     api_group = "rbac.authorization.k8s.io"
-#     kind      = "ClusterRole"
-#     name      = kubernetes_cluster_role_v1.argocd_manager.metadata.0.name
-#   }
-#   subject {
-#     kind      = "ServiceAccount"
-#     name      = kubernetes_service_account_v1.argocd_manager.metadata.0.name
-#     namespace = "kube-system"
-#   }
-# }
+variable "civo_token" {
+  type = string
+}
 
-# resource "kubernetes_service_account_v1" "argocd_manager" {
-#   metadata {
-#     name      = "argocd-manager"
-#     namespace = "kube-system"
-#   }
-#   secret {
-#     name = "argocd-manager-token"
-#   }
-# }
+resource "kubernetes_namespace_v1" "external_dns" {
+  metadata {
+    name = "external-dns"
+  }
+}
 
-# resource "kubernetes_secret_v1" "argocd_manager" {
-#   metadata {
-#     name      = "argocd-manager-token"
-#     namespace = "kube-system"
-#     annotations = {
-#       "kubernetes.io/service-account.name" = "argocd-manager"
-#     }
-#   }
-#   type       = "kubernetes.io/service-account-token"
-#   depends_on = [kubernetes_service_account_v1.argocd_manager]
-# }
-
-# resource "kubernetes_namespace_v1" "crossplane_system" {
-#   metadata {
-#     name = "crossplane-system"
-#   }
-# }
-
-# resource "kubernetes_secret_v1" "crossplane_system" {
-#   metadata {
-#     name      = "tf-argocd-cluster-secrets"
-#     namespace = "default"
-#   }
-#   data = {
-#     bearerToken = "any old string"
-#     tlsClientConfig = jsonencode({
-#       caData = "any old string"
-#       certData  = "Opaque"
-#       insecure  = "Opaque"
-#       keyData  = "Opaque"
-#     })
-#   }
-#   type = "Opaque"
-# }
+resource "kubernetes_secret_v1" "external_dns" {
+  metadata {
+    name      = "external-dns-secrets"
+    namespace = kubernetes_namespace_v1.external_dns.metadata.0.name
+  }
+  data = {
+    token = var.civo_token
+  }
+  type = "Opaque"
+}
