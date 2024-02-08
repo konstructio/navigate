@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-green-external-dns
+  name: cluster-newyork-external-dns
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: '10'
+    argocd.argoproj.io/sync-wave: '20'
 spec:
   project: default
   source:
@@ -29,7 +29,7 @@ spec:
               key: token
     chart: external-dns
   destination:
-    name: dev-green
+    name: cluster-newyork
     namespace: external-dns
   syncPolicy:
     automated:

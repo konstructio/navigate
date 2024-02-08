@@ -1,14 +1,14 @@
 apiVersion: tf.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
-  name: dev-green
+  name: cluster-newyork
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
   configuration: |
       terraform {
         backend "kubernetes" {
-          secret_suffix     = "providerconfig-civo-lon1"
+          secret_suffix     = "providerconfig-civo-nyc1"
           namespace         = "crossplane-system"
           in_cluster_config = true
         }
@@ -23,7 +23,7 @@ spec:
         }
       }
       provider "civo" {
-        region = "lon1"
+        region = "nyc1"
       }
   credentials:
   - filename: gen-nothing

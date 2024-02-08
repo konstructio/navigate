@@ -1,14 +1,14 @@
 apiVersion: tf.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
-  name: dev-blue
+  name: cluster-london
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
   configuration: |
       terraform {
         backend "kubernetes" {
-          secret_suffix     = "providerconfig-civo-nyc1"
+          secret_suffix     = "providerconfig-cluster-london"
           namespace         = "crossplane-system"
           in_cluster_config = true
         }
@@ -23,7 +23,7 @@ spec:
         }
       }
       provider "civo" {
-        region = "nyc1"
+        region = "lon1"
       }
   credentials:
   - filename: gen-nothing
