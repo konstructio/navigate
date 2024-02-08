@@ -3,7 +3,7 @@ kind: ProviderConfig
 metadata:
   name: dev-blue
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   configuration: |
       terraform {

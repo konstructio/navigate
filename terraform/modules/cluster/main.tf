@@ -104,10 +104,6 @@ resource "kubernetes_secret_v1" "argocd_manager" {
   depends_on = [kubernetes_service_account_v1.argocd_manager]
 }
 
-variable "civo_token" {
-  type = string
-}
-
 resource "kubernetes_namespace_v1" "external_dns" {
   metadata {
     name = "external-dns"
