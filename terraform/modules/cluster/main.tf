@@ -1,24 +1,24 @@
 # ##! uncomment this block to run terraform locally
-terraform {
-  backend "kubernetes" {
-    secret_suffix     = "providerconfig-civo-nyc1"
-    namespace         = "crossplane-system"
-    # in_cluster_config = true
-    config_path       = "~/.navigate-kubeconfig"
-  }
-  required_providers {
-    civo = {
-      source = "civo/civo"
-    }
-    kubernetes = {
-      source = "hashicorp/kubernetes"
-      version = "2.23.0"
-    }
-  }
-}
-provider "civo" {
-  region = "nyc1"
-}
+# terraform {
+#   backend "kubernetes" {
+#     secret_suffix     = "providerconfig-civo-nyc1"
+#     namespace         = "crossplane-system"
+#     # in_cluster_config = true
+#     config_path       = "~/.navigate-kubeconfig"
+#   }
+#   required_providers {
+#     civo = {
+#       source = "civo/civo"
+#     }
+#     kubernetes = {
+#       source = "hashicorp/kubernetes"
+#       version = "2.23.0"
+#     }
+#   }
+# }
+# provider "civo" {
+#   region = "nyc1"
+# }
 # ##! uncomment this block to run terraform locally
 
 
