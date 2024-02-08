@@ -3,6 +3,8 @@ metaphor:
     linkerd.io/inject: "enabled"
   labels: |
     mirror.linkerd.io/exported: "true"
+  image:
+    tag: 0.1.0-20204-navigate-austin
   ingress:
     className: nginx
     enabled: true
