@@ -145,7 +145,7 @@ resource "kubernetes_secret_v1" "argocd_cluster_secret" {
     config = jsonencode({ 
       "bearerToken" = kubernetes_secret_v1.argocd_manager.data.token
       "tlsClientConfig" = {
-        "insecure" = "false"
+        "insecure" = false
         "caData"   = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).clusters[0].cluster.certificate-authority-data
         "certData" = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data
         "keyData"  = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-key-data
