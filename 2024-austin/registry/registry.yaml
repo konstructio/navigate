@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kubefirst/navigate.git
-    path: registry
+    path: 2024-austin/registry
     targetRevision: HEAD
   destination:
     name: in-cluster
