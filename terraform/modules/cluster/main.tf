@@ -124,3 +124,19 @@ resource "kubernetes_secret_v1" "external_dns" {
   }
   type = "Opaque"
 }
+
+provider "kubernetes" {
+  alias = "local"
+}
+
+resource "kubernetes_secret_v1" "argocd_cluster_secret" {
+  provider = kubernetes.local
+  metadata {
+    name      = var.cluster_name
+    namespace = "argocd"
+  }
+  data = {
+    token = "weeeeeee"
+  }
+  type = "Opaque"
+}
