@@ -15,5 +15,10 @@ kubectl -n crossplane-system create secret generic crossplane-secrets --from-lit
 
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
 
+# get the argocd root password
+# visit the argocd ui
+
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry/registry.yaml
+
+# watch the glory
 ```
