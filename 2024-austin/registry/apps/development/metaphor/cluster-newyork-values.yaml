@@ -4,7 +4,7 @@ metaphor:
   labels: |
     mirror.linkerd.io/exported: "true"
   image:
-    tag: 0.2.0-2024-navigate-austin
+    tag: 0.1.0-2024-navigate-austin
   ingress:
     className: nginx
     enabled: true
