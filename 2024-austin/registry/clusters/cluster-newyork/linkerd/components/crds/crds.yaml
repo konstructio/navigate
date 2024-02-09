@@ -12,7 +12,7 @@ spec:
   source:
     chart: linkerd-crds
     repoURL: https://helm.linkerd.io/stable
-    targetRevision: 1.6.1
+    targetRevision: 1.8.0
   destination:
     name: cluster-newyork
     namespace: linkerd
