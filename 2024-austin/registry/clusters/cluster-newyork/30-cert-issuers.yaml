@@ -12,7 +12,7 @@ spec:
     path: 2024-austin/registry/clusters/cluster-newyork/cert-issuers
     targetRevision: HEAD
   destination:
-    server: https://kubernetes.default.svc
+    name: cluster-newyork
     namespace: cert-manager
   syncPolicy:
     automated:
