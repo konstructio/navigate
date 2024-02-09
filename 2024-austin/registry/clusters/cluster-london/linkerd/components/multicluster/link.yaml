@@ -14,9 +14,9 @@ spec:
   destination:
     name: cluster-london
     namespace: linkerd-multicluster
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+  # syncPolicy:
+  #   automated:
+  #     prune: true
+  #     selfHeal: true
+  #   syncOptions:
+  #     - CreateNamespace=true
