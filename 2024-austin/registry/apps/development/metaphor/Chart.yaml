@@ -1,0 +1,9 @@
+apiVersion: v2
+dependencies:
+  - name: metaphor
+    repository: https://charts.kubefirst.com
+    version: 0.1.0-20204-navigate-austin
+description: metaphor example application
+name: metaphor-development
+type: application
+version: 1.0.0
