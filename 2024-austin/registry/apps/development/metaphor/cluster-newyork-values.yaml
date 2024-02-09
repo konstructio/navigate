@@ -12,17 +12,19 @@ metaphor:
       cert-manager.io/cluster-issuer: 'letsencrypt-prod'
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts:
-      - host: metaphor-development.freegitopsmagic.com
+      - host: metaphor-newyork.freegitopsmagic.com
         paths:
           - path: /
             pathType: Prefix
     tls:
       - secretName: metaphor-tls
         hosts:
-          - metaphor-development.freegitopsmagic.com
+          - metaphor-newyork.freegitopsmagic.com
   metaphor: # do we need these two urls?
-    host: https://metaphor-development.freegitopsmagic.com/api
+    host: https://metaphor-newyork.freegitopsmagic.com/api
     console: https://kubefirst.freegitopsmagic.com
+  
+  useExternalSecret: false
 
   # clusterSecretStoreName: newyork-vault-kv-secret
   configs:
