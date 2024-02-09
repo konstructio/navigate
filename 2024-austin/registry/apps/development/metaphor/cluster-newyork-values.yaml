@@ -1,7 +1,7 @@
 metaphor:
-  annotations: |
+  annotations:
     linkerd.io/inject: "enabled"
-  labels: |
+  labels:
     mirror.linkerd.io/exported: "true"
   image:
     tag: 0.1.0-2024-navigate-austin
