@@ -15,9 +15,6 @@ spec:
     helm:
       values: |-
         controller:
-          podAnnotations:
-            linkerd.io/inject: enabled
-          ingressClass: nginx
           publishService:
             enabled: true
           service:
