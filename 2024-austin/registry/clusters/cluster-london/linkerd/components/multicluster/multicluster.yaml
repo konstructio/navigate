@@ -12,7 +12,7 @@ spec:
   source:
     chart: linkerd-multicluster
     repoURL: https://helm.linkerd.io/stable
-    targetRevision: 30.11.19
+    targetRevision: 30.11.9
   destination:
     name: cluster-london
     namespace: linkerd-multicluster
