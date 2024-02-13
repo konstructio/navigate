@@ -1,0 +1,60 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-fred-linkerd-control-plane
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: linkerd-control-plane
+    repoURL: https://helm.linkerd.io/stable
+    targetRevision: 1.16.9
+    helm:
+      values: |-
+        identity:
+          issuer:
+            tls:
+              crtPEM: |
+                -----BEGIN CERTIFICATE-----
+                MIIBsjCCAVigAwIBAgIQEKRz8Zn7zvask53tkpp4SjAKBggqhkjOPQQDAjAlMSMw
+                IQYDVQQDExpyb290LmxpbmtlcmQuY2x1c3Rlci5sb2NhbDAeFw0yMzA4MTQxOTUx
+                NDdaFw0yNDA4MTMxOTUxNDdaMCkxJzAlBgNVBAMTHmlkZW50aXR5LmxpbmtlcmQu
+                Y2x1c3Rlci5sb2NhbDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABAxCl3mx5OBQ
+                LBMxlt/qCWgJKHChj14qkaA1IakkJhrYhzn+oRvCAtdxZAr6wqshcDK0QiTrG5S1
+                unUzGJQfI6ujZjBkMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEA
+                MB0GA1UdDgQWBBSS1pn4jcZrKx2LZuH5NjQNvtOqCzAfBgNVHSMEGDAWgBTqjnQb
+                5Z3vIPAU82Vqe4P7ouCahzAKBggqhkjOPQQDAgNIADBFAiAdh6mZOn+6Ghv8DPd5
+                mZ5WFAq4e/jQtqk2pQJujVPlowIhAPseiSa4nOoOdujtlG2a5Ds42P13WmwY4T9P
+                nlKpikak
+                -----END CERTIFICATE-----
+              keyPEM: |
+                -----BEGIN EC PRIVATE KEY-----
+                MHcCAQEEICFay7C+siLO/pyjk5aH2XuO7U37vPowDjFck1lvXllVoAoGCCqGSM49
+                AwEHoUQDQgAEDEKXebHk4FAsEzGW3+oJaAkocKGPXiqRoDUhqSQmGtiHOf6hG8IC
+                13FkCvrCqyFwMrRCJOsblLW6dTMYlB8jqw==
+                -----END EC PRIVATE KEY-----
+        identityTrustAnchorsPEM: |
+          -----BEGIN CERTIFICATE-----
+          MIIBjTCCATOgAwIBAgIQCKRWGaY2nOAq0tnfnStLGjAKBggqhkjOPQQDAjAlMSMw
+          IQYDVQQDExpyb290LmxpbmtlcmQuY2x1c3Rlci5sb2NhbDAeFw0yMzA4MTQxOTQz
+          MjhaFw0zMzA4MTExOTQzMjhaMCUxIzAhBgNVBAMTGnJvb3QubGlua2VyZC5jbHVz
+          dGVyLmxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEZokNmhDOrMsSJFap
+          IpiYpmKEE6Zfrkwv5AN5vZLX0I9wpWLQn4ybIR0S6Z8Epucq8WSxpmJoYjJqTUeD
+          C/gYGqNFMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYD
+          VR0OBBYEFOqOdBvlne8g8BTzZWp7g/ui4JqHMAoGCCqGSM49BAMCA0gAMEUCIQDy
+          Cd5pxd0Cq5Hu3WL2s2/ccRBtmM6vj7cR4VU1DeW9fQIgMPWgUGNEq7Gyexy2NhrS
+          PhpbDSjCABK4tNZMDBn/3f0=
+          -----END CERTIFICATE----- 
+  destination:
+    name: cluster-fred
+    namespace: linkerd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-fred-linkerd-multicluster-components
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '10'
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/kubefirst/navigate
+    path: sync-waves/registry/clusters/cluster-fred/linkerd/components/multicluster
+    targetRevision: HEAD
+  destination:
+    name: in-cluster
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
