@@ -3,8 +3,7 @@ k3d cluster create kubefirst --agents "1" --agents-memory "4096m"
 
 # todo  https://docs.k3s.io/helm#automatically-deploying-manifests-and-helm-charts
 # consider creating a kubernetes job at a URL that will bootstrap this through a manifest (wrap it in a helm chart?)
-kubectl kustomize https://github.com/kubefirst/navigate/sync-waves/manifests/argocd\?ref\=main | kubectl apply -f -
-
+kubectl kustomize https://github.com/kubefirst/manifests/argocd/demo\?ref\=main | kubectl apply -f -
 export CIVO_TOKEN=$CIVO_TOKEN
 kubectl create ns crossplane-system 
 kubectl -n crossplane-system create secret generic crossplane-secrets --from-literal=CIVO_TOKEN=$CIVO_TOKEN --from-literal=TF_VAR_civo_token=$CIVO_TOKEN
