@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kubefirst/navigate.git
-    path: 2024-austin/registry/clusters/cluster-fred
+    path: sync-waves/registry/clusters/cluster-fred
     targetRevision: HEAD
   destination:
     name: in-cluster

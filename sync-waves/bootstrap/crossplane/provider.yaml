@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kubefirst/navigate
-    path: 2024-austin/bootstrap/crossplane/provider
+    path: sync-waves/bootstrap/crossplane/provider
     targetRevision: HEAD
   destination:
     name: in-cluster
