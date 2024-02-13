@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: west-external-dns
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '20'
+spec:
+  project: default
+  source:
+    repoURL: https://kubernetes-sigs.github.io/external-dns
+    targetRevision: 1.14.3
+    helm:
+      releaseName: external-dns
+      values: |
+        serviceAccount:
+          create: true
+          name: external-dns
+        provider: civo
+        sources:
+        - ingress
+        domainFilters:
+        - freegitopsmagic.com
+        env:
+        - name: CIVO_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: external-dns-secrets
+              key: token
+    chart: external-dns
+  destination:
+    name: west
+    namespace: external-dns
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,177 @@
+# apiVersion: v1
+# data:
+#   kubeconfig: YXBpVmVyc2lvbjogdjEKY2x1c3RlcnM6Ci0gY2x1c3RlcjoKICAgIGNlcnRpZmljYXRlLWF1dGhvcml0eS1kYXRhOiBMUzB0TFMxQ1JVZEpUaUJEUlZKVVNVWkpRMEZVUlMwdExTMHRDazFKU1VKbFJFTkRRVkl5WjBGM1NVSkJaMGxDUVVSQlMwSm5aM0ZvYTJwUFVGRlJSRUZxUVdwTlUwVjNTSGRaUkZaUlVVUkVRbWh5VFROTmRHTXlWbmtLWkcxV2VVeFhUbWhSUkVVelRVUmpNRTFxVVhoT2FtTjNTR2hqVGsxcVVYZE5ha0UwVFdwQmVVOVVTVE5YYUdOT1RYcFJkMDFxUVRGTmFrRjVUMVJKTXdwWGFrRnFUVk5GZDBoM1dVUldVVkZFUkVKb2NrMHpUWFJqTWxaNVpHMVdlVXhYVG1oUlJFVXpUVVJqTUUxcVVYaE9hbU4zVjFSQlZFSm5ZM0ZvYTJwUENsQlJTVUpDWjJkeGFHdHFUMUJSVFVKQ2QwNURRVUZVY2pBelRXWkhLMDFvWTFOV1ZGWTBkVUU0U2xvMVdteFdaWGw1YTNwMFJWSmpWV0Z4U21abFpVRUtNVWhCZDFVeE9VWXdUbVV5VnpNNVRsWkxibEYzVVN0NEt6aEpaVlE0UzFsa1NuUnFRa0pOWVVvMmVtZHZNRWwzVVVSQlQwSm5UbFpJVVRoQ1FXWTRSUXBDUVUxRFFYRlJkMFIzV1VSV1VqQlVRVkZJTDBKQlZYZEJkMFZDTDNwQlpFSm5UbFpJVVRSRlJtZFJWVnBsV2tOdWVFbEpVVGRPUTNkdFpHVnBPVlZzQ25aV1owUnFhRzkzUTJkWlNVdHZXa2w2YWpCRlFYZEpSRk5SUVhkU1owbG9RVXA1WTBweGJGVktibE56Wm1oQ1YxcDRXREpUYTFsMlNUVjVjWEZIWlZFS2JWbDBRMUF4ZFVFd1JFdERRV2xGUVRod01XTlBNbWhVYTNJeFYydG1WVWhSTUVFMWJGb3hNakJzYjBaR1kwSk9jMDlQUWxOd1VXVXhORWs5Q2kwdExTMHRSVTVFSUVORlVsUkpSa2xEUVZSRkxTMHRMUzBLCiAgICBzZXJ2ZXI6IGh0dHBzOi8vMjEyLjIuMjQ2LjI5OjY0NDMKICBuYW1lOiBjbHVzdGVyLW5ld3lvcmsKY29udGV4dHM6Ci0gY29udGV4dDoKICAgIGNsdXN0ZXI6IGNsdXN0ZXItbmV3eW9yawogICAgdXNlcjogY2x1c3Rlci1uZXd5b3JrCiAgbmFtZTogY2x1c3Rlci1uZXd5b3JrCmN1cnJlbnQtY29udGV4dDogY2x1c3Rlci1uZXd5b3JrCmtpbmQ6IENvbmZpZwpwcmVmZXJlbmNlczoge30KdXNlcnM6Ci0gbmFtZTogY2x1c3Rlci1uZXd5b3JrCiAgdXNlcjoKICAgIGNsaWVudC1jZXJ0aWZpY2F0ZS1kYXRhOiBMUzB0TFMxQ1JVZEpUaUJEUlZKVVNVWkpRMEZVUlMwdExTMHRDazFKU1VKcmFrTkRRVlJsWjBGM1NVSkJaMGxKVVVKS01EZDFZelUxSzAxM1EyZFpTVXR2V2tsNmFqQkZRWGRKZDBsNlJXaE5RamhIUVRGVlJVRjNkMWtLWVhwT2VreFhUbk5oVjFaMVpFTXhhbGxWUVhoT2VrRXpUa1JKTUUxVVdUTk5RalJZUkZSSk1FMUVTWGRQUkVsM1RXcHJlVTR4YjFoRVZFa3hUVVJKZHdwT2VrbDNUV3ByZVU0eGIzZE5SRVZZVFVKVlIwRXhWVVZEYUUxUFl6TnNlbVJIVm5SUGJURm9Zek5TYkdOdVRYaEdWRUZVUW1kT1ZrSkJUVlJFU0U0MUNtTXpVbXhpVkhCb1drY3hjR0pxUWxwTlFrMUhRbmx4UjFOTk5EbEJaMFZIUTBOeFIxTk5ORGxCZDBWSVFUQkpRVUpJU3pGbVdYQmFWRFJyZEU1VmRGZ0taWEZvZVRkSlQxZElTbVppTjBScmNXMHZPRU5FZW14S05HVlRTSFEyVjBWRmFVMU1lSGhIV0dad1NWYzNaVFE0TmpCbFVHeHlZa2gwTUVScWRFTkVNQXBNUlRSV1FpdHRhbE5FUWtkTlFUUkhRVEZWWkVSM1JVSXZkMUZGUVhkSlJtOUVRVlJDWjA1V1NGTlZSVVJFUVV0Q1oyZHlRbWRGUmtKUlkwUkJha0ZtQ2tKblRsWklVMDFGUjBSQlYyZENVakkwTmxWVFZXaFpZU3RLVHpJck5UaEdiakJ3UTNGV1dqZ3Zla0ZMUW1kbmNXaHJhazlRVVZGRVFXZE9Ta0ZFUWtjS1FXbEZRVzlMYzJZMlQyaHlSVTVXTW1oVWNIbHBXbUoxYTI1b1RGVTBVbVpvWlZCdFltRTNOWEJaVXpjd1dsbERTVkZFTlhaeVNUaFFiekZpYUUxT2JncFNRbVJLTUZoVVRraG5jMWxWTDNsblpHd3ZaM294VFhOR2FsSkZXbWM5UFFvdExTMHRMVVZPUkNCRFJWSlVTVVpKUTBGVVJTMHRMUzB0Q2kwdExTMHRRa1ZIU1U0Z1EwVlNWRWxHU1VOQlZFVXRMUzB0TFFwTlNVbENaVVJEUTBGU01tZEJkMGxDUVdkSlFrRkVRVXRDWjJkeGFHdHFUMUJSVVVSQmFrRnFUVk5GZDBoM1dVUldVVkZFUkVKb2NrMHpUWFJaTW5od0NscFhOVEJNVjA1b1VVUkZNMDFFWXpCTmFsRjRUbXBqZDBob1kwNU5hbEYzVFdwQk5FMXFRWGxQVkVrelYyaGpUazE2VVhkTmFrRXhUV3BCZVU5VVNUTUtWMnBCYWsxVFJYZElkMWxFVmxGUlJFUkNhSEpOTTAxMFdUSjRjRnBYTlRCTVYwNW9VVVJGTTAxRVl6Qk5hbEY0VG1wamQxZFVRVlJDWjJOeGFHdHFUd3BRVVVsQ1FtZG5jV2hyYWs5UVVVMUNRbmRPUTBGQlZGZEdORTFEUkVrMGEzaHZRbFpKWlZGSVNHdzJObkZhYjFCeU5qQnpSR05HV214TmJHeEJiazFsQ2s5NlNtTXZUMkpUTUd4RFkycFpWa1ZVTmxKeE5YQjRZMjVNVkdkRGQwVTBZM2h6YjNoeVVtUnFaUzlGYnpCSmQxRkVRVTlDWjA1V1NGRTRRa0ZtT0VVS1FrRk5RMEZ4VVhkRWQxbEVWbEl3VkVGUlNDOUNRVlYzUVhkRlFpOTZRV1JDWjA1V1NGRTBSVVpuVVZWa2RVOXNSV3hKVjBkMmFWUjBkblZtUWxvNVN3cFJjV3hYWmxBNGQwTm5XVWxMYjFwSmVtb3dSVUYzU1VSVFVVRjNVbWRKYUVGS2NIRnhUM1JVVEd3NGVFcEtUVFJ4V0RoeVpHWjJlR3h1ZGtONFNVcGFDa3BUV1VVd1VVWkhMMk5EWVVGcFJVRTNNVGxSVFdodGVWRlJSM1ZZZG5wbWVua3hTM1JaV1ZrclFtNU1hRTlrVERGbFRqVXplRkZuZFdOelBRb3RMUzB0TFVWT1JDQkRSVkpVU1VaSlEwRlVSUzB0TFMwdENnPT0KICAgIGNsaWVudC1rZXktZGF0YTogTFMwdExTMUNSVWRKVGlCRlF5QlFVa2xXUVZSRklFdEZXUzB0TFMwdENrMUlZME5CVVVWRlNVTmpOeTgwY25oNWJuQjVUbWt5VEVSVU1HTjZVVzQyTVc1UlZXWldURmc1YUU1SlJUSTRSMHhHYTIxdlFXOUhRME54UjFOTk5Ea0tRWGRGU0c5VlVVUlJaMEZGWTNKV09XbHNiRkJwVXpBeFV6RmtObkZJVEhObk5WbGpiRGwyYzA5VGNXSXZkMGxRVDFWdWFEVkpaVE53V1ZGVFNYZDJTQXBGV21RcmEyaGlkRGRxZW5KU05DdFhkSE5sTTFGUFR6QkpVRkZ6VkdoVlNEWlJQVDBLTFMwdExTMUZUa1FnUlVNZ1VGSkpWa0ZVUlNCTFJWa3RMUzB0TFFvPQoK
+# kind: Secret
+# metadata:
+#   creationTimestamp: null
+#   name: cluster-credentials-west
+#   namespace: linkerd-multicluster
+# type: mirror.linkerd.io/remote-kubeconfig
+# ---
+# apiVersion: multicluster.linkerd.io/v1alpha1
+# kind: Link
+# metadata:
+#   name: west
+#   namespace: linkerd-multicluster
+# spec:
+#   clusterCredentialsSecret: cluster-credentials-west
+#   gatewayAddress: 74.220.21.90
+#   gatewayIdentity: linkerd-gateway.linkerd-multicluster.serviceaccount.identity.linkerd.cluster.local
+#   gatewayPort: "4143"
+#   probeSpec:
+#     path: /ready
+#     period: 3s
+#     port: "4191"
+#   selector:
+#     matchLabels:
+#       mirror.linkerd.io/exported: "true"
+#   targetClusterDomain: cluster.local
+#   targetClusterLinkerdNamespace: linkerd
+#   targetClusterName: west
+# ---
+# ---
+# kind: ClusterRole
+# apiVersion: rbac.authorization.k8s.io/v1
+# metadata:
+#   name: linkerd-service-mirror-access-local-resources-west
+#   labels:
+#     linkerd.io/extension: multicluster
+#     component: service-mirror
+#     mirror.linkerd.io/cluster-name: west
+# rules:
+# - apiGroups: [""]
+#   resources: ["endpoints", "services"]
+#   verbs: ["list", "get", "watch", "create", "delete", "update"]
+# - apiGroups: [""]
+#   resources: ["namespaces"]
+#   verbs: ["list", "get", "watch"]
+# ---
+# kind: ClusterRoleBinding
+# apiVersion: rbac.authorization.k8s.io/v1
+# metadata:
+#   name: linkerd-service-mirror-access-local-resources-west
+#   labels:
+#     linkerd.io/extension: multicluster
+#     component: service-mirror
+#     mirror.linkerd.io/cluster-name: west
+# roleRef:
+#   apiGroup: rbac.authorization.k8s.io
+#   kind: ClusterRole
+#   name: linkerd-service-mirror-access-local-resources-west
+# subjects:
+# - kind: ServiceAccount
+#   name: linkerd-service-mirror-west
+#   namespace: linkerd-multicluster
+# ---
+# kind: Role
+# apiVersion: rbac.authorization.k8s.io/v1
+# metadata:
+#   name: linkerd-service-mirror-read-remote-creds-west
+#   namespace: linkerd-multicluster
+#   labels:
+#     linkerd.io/extension: multicluster
+#     component: service-mirror
+#     mirror.linkerd.io/cluster-name: west
+# rules:
+#   - apiGroups: [""]
+#     resources: ["secrets"]
+#     resourceNames: ["cluster-credentials-west"]
+#     verbs: ["list", "get", "watch"]
+#   - apiGroups: ["multicluster.linkerd.io"]
+#     resources: ["links"]
+#     verbs: ["list", "get", "watch"]
+# ---
+# kind: RoleBinding
+# apiVersion: rbac.authorization.k8s.io/v1
+# metadata:
+#   name: linkerd-service-mirror-read-remote-creds-west
+#   namespace: linkerd-multicluster
+#   labels:
+#     linkerd.io/extension: multicluster
+#     component: service-mirror
+#     mirror.linkerd.io/cluster-name: west
+# roleRef:
+#   apiGroup: rbac.authorization.k8s.io
+#   kind: Role
+#   name: linkerd-service-mirror-read-remote-creds-west
+# subjects:
+#   - kind: ServiceAccount
+#     name: linkerd-service-mirror-west
+#     namespace: linkerd-multicluster
+# ---
+# kind: ServiceAccount
+# apiVersion: v1
+# metadata:
+#   name: linkerd-service-mirror-west
+#   namespace: linkerd-multicluster
+#   labels:
+#     linkerd.io/extension: multicluster
+#     component: service-mirror
+#     mirror.linkerd.io/cluster-name: west
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   labels:
+#     linkerd.io/extension: multicluster
+#     component: service-mirror
+#     mirror.linkerd.io/cluster-name: west
+#   name: linkerd-service-mirror-west
+#   namespace: linkerd-multicluster
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       component: linkerd-service-mirror
+#       mirror.linkerd.io/cluster-name: west
+#   template:
+#     metadata:
+#       annotations:
+#         linkerd.io/inject: enabled
+#         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+#         config.alpha.linkerd.io/proxy-wait-before-exit-seconds: "0"
+#       labels:
+#         component: linkerd-service-mirror
+#         mirror.linkerd.io/cluster-name: west
+#     spec:
+#       containers:
+#       - args:
+#         - service-mirror
+#         - -log-level=info
+#         - -event-requeue-limit=3
+#         - -namespace=linkerd-multicluster
+#         - -enable-pprof=false
+#         - west
+#         image: cr.l5d.io/linkerd/controller:stable-2.13.6
+#         name: service-mirror
+#         securityContext:
+#           allowPrivilegeEscalation: false
+#           capabilities:
+#             drop:
+#             - ALL
+#           runAsNonRoot: true
+#           runAsUser: 2103
+#           seccompProfile:
+#             type: RuntimeDefault
+#         ports:
+#         - containerPort: 9999
+#           name: admin-http
+#       securityContext:
+#         seccompProfile:
+#           type: RuntimeDefault
+#       serviceAccountName: linkerd-service-mirror-west
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: probe-gateway-west
+#   namespace: linkerd-multicluster
+#   labels:
+#     mirror.linkerd.io/mirrored-gateway: "true"
+#     mirror.linkerd.io/cluster-name: west
+# spec:
+#   ports:
+#   - name: mc-probe
+#     port: 4191
+#     protocol: TCP
+# ---
