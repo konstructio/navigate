@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kustomize-install-argocd
+  namespace: kube-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
+spec:
+  template:
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: wait
+        image: bitnami/kubectl:1.25.12
+        command:
+        - /bin/sh
+        - -c
+        - |
+          kubectl kustomize https://github.com/kubefirst/manifests/argocd/demo\?ref\=main | kubectl apply -f -
+      restartPolicy: Never
+  backoffLimit: 1
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kubernetes-dashboard-admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: kube-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: crossplane-system 
