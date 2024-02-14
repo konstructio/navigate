@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: west-cert-issuers
+  name: east-cert-issuers
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: '30'
+    argocd.argoproj.io/sync-wave: '40'
 spec:
   project: default
   source:
     repoURL: https://github.com/kubefirst/navigate.git
-    path: 2024-austin/registry-test/clusters/west/cert-issuers
+    path: 2024-austin/registry-test/clusters/east/cert-issuers
     targetRevision: east-west
   destination:
-    name: west
+    name: east
     namespace: cert-manager
   syncPolicy:
     automated:

@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: east-cert-manager
+  name: west-cert-manager
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: '20'
+    argocd.argoproj.io/sync-wave: '30'
 spec:
   project: default
   source:
@@ -20,7 +20,7 @@ spec:
         installCRDs: true
     chart: cert-manager
   destination:
-    name: east
+    name: west
     namespace: cert-manager
   syncPolicy:
     automated:

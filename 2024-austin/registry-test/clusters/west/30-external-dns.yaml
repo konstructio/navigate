@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: east-external-dns
+  name: west-external-dns
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: '20'
+    argocd.argoproj.io/sync-wave: '30'
 spec:
   project: default
   source:
@@ -31,7 +31,7 @@ spec:
               key: token
     chart: external-dns
   destination:
-    name: east
+    name: west
     namespace: external-dns
   syncPolicy:
     automated:
