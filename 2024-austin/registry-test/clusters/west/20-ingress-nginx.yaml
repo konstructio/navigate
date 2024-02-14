@@ -14,20 +14,10 @@ spec:
     targetRevision: 4.9.1
     helm:
       values: |-
-        # controller:
-        #   podAnnotations:
-        #     linkerd.io/inject: enabled
-        #   ingressClass: nginx
-        #   publishService:
-        #     enabled: true
-        #   service:
-        #     annotations:
-        #       service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
-        #       service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "60"
-        #   extraArgs:
-        #     enable-ssl-passthrough: true
-        # ---
         controller:
+          podAnnotations:
+            linkerd.io/inject: enabled
+          ingressClass: nginx
           publishService:
             enabled: true
           service:
