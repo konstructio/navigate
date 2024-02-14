@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: west-linkerd-multicluster
+  name: west-linkerd-smi
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -10,12 +10,12 @@ metadata:
 spec:
   project: default
   source:
-    chart: linkerd-multicluster
-    repoURL: https://helm.linkerd.io/stable
-    targetRevision: 30.11.9
+    chart: linkerd-smi
+    repoURL: https://linkerd.github.io/linkerd-smi
+    targetRevision: linkerd-smi-1.0.4
   destination:
     name: west
-    namespace: linkerd-multicluster
+    namespace: linkerd-smi
   syncPolicy:
     automated:
       prune: true
