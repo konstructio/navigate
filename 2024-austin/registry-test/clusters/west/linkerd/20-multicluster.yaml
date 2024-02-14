@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: east-linkerd-multicluster-components
+  name: west-linkerd-multicluster-components
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: '10'
+    argocd.argoproj.io/sync-wave: '20'
 spec:
   project: default
   source:
     repoURL: https://github.com/kubefirst/navigate
-    path: 2024-austin/registry-test/clusters/east/linkerd/components/multicluster
+    path: 2024-austin/registry-test/clusters/west/linkerd/components/multicluster
     targetRevision: east-west
   destination:
     name: in-cluster
