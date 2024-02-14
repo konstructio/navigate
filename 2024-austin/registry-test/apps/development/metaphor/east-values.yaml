@@ -1,7 +1,6 @@
 metaphor:
   annotations:
     linkerd.io/inject: "enabled"
-    config.linkerd.io/enable-debug-sidecar: "true"
   labels:
     mirror.linkerd.io/exported: "true"
   image:
