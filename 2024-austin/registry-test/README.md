@@ -15,11 +15,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 # visit the argocd ui
 
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry-test/registry.yaml
-
-# watch the glory
+# watch the registry in argocd ui
 ```
-
-
 
 linkerd addition notes:
 - need to remove certs from 2024-austin/registry/clusters/cluster-london/linkerd/components/control-plane/control-plane.yaml

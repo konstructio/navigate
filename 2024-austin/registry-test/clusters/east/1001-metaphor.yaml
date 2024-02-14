@@ -1,27 +1,27 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: east-metaphor-development
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-  annotations:
-    argocd.argoproj.io/sync-wave: '1001'
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/kubefirst/navigate
-    path: 2024-austin/registry-test/apps/development/metaphor
-    targetRevision: HEAD
-    helm:
-      valueFiles:
-        - east-values.yaml
-  destination:
-    name: east
-    namespace: development
-  # syncPolicy:
-  #   automated:
-  #     prune: true
-  #     selfHeal: true
-  #   syncOptions:
-  #     - CreateNamespace=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: east-metaphor-development
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+#   annotations:
+#     argocd.argoproj.io/sync-wave: '1001'
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://github.com/kubefirst/navigate
+#     path: 2024-austin/registry-test/apps/development/metaphor
+#     targetRevision: HEAD
+#     helm:
+#       valueFiles:
+#         - east-values.yaml
+#   destination:
+#     name: east
+#     namespace: development
+#   # syncPolicy:
+#   #   automated:
+#   #     prune: true
+#   #     selfHeal: true
+#   #   syncOptions:
+#   #     - CreateNamespace=true
