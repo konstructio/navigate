@@ -158,7 +158,7 @@ resource "kubernetes_secret_v1" "cluster_secret" {
     namespace = "argocd"
   }
   data = {
-    kubeconfig = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig)
+    kubeconfig = civo_kubernetes_cluster.cluster.kubeconfig
   }
   type = "Opaque"
 }
