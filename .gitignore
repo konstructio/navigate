@@ -1,8 +1,8 @@
 .terraform*
 .terraform/
 terraform.*
-tf/
-tf-dev-blue/
-tf-dev-green/
-dev-blue-secret.yaml
-dev-green-secret.yaml
+ca.crt
+ca.key
+issuer.crt
+issuer.key
+sh.sh
