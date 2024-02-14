@@ -12,7 +12,7 @@ spec:
   source:
     chart: linkerd-smi
     repoURL: https://linkerd.github.io/linkerd-smi
-    targetRevision: linkerd-smi-1.0.4
+    targetRevision: 1.0.4
   destination:
     name: west
     namespace: linkerd-smi
