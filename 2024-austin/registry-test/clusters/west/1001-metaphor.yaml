@@ -12,7 +12,7 @@
 #   source:
 #     repoURL: https://github.com/kubefirst/navigate
 #     path: 2024-austin/registry-test/apps/development/metaphor
-#     targetRevision: HEAD
+#     targetRevision: east-west
 #     helm:
 #       valueFiles:
 #         - west-values.yaml

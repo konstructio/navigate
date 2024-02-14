@@ -10,7 +10,7 @@
 #   source:
 #     repoURL: https://github.com/kubefirst/navigate
 #     path: 2024-austin/registry-test/clusters/west/linkerd/components/multicluster/link
-#     targetRevision: HEAD
+#     targetRevision: east-west
 #   destination:
 #     name: west
 #     namespace: linkerd-multicluster
