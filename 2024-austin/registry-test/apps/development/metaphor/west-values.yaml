@@ -3,6 +3,7 @@ metaphor:
     linkerd.io/inject: "enabled"
   labels:
     mirror.linkerd.io/exported: "true"
+    config.linkerd.io/enable-debug-sidecar: "true"
   image:
     tag: 0.1.0-2024-navigate-austin
   ingress:
