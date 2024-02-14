@@ -3,10 +3,10 @@ kind: Application
 metadata:
   name: east-infrastructure
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: '10'
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: '10'
 spec:
   project: default
   source:
