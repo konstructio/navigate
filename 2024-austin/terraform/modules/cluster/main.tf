@@ -150,3 +150,15 @@ resource "kubernetes_secret_v1" "argocd_cluster_secret" {
   }
   type = "Opaque"
 }
+
+resource "kubernetes_secret_v1" "cluster_secret" {
+  provider = kubernetes.local
+  metadata {
+    name      = "${var.cluster_name}-kubeconfig"
+    namespace = "argocd"
+  }
+  data = {
+    kubeconfig = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig)
+  }
+  type = "Opaque"
+}
