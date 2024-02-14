@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/kubefirst/navigate
     path: 2024-austin/registry-test/clusters/east/linkerd/components/smi
-    targetRevision: east-east
+    targetRevision: east-west
   destination:
     name: in-cluster
     namespace: argocd
