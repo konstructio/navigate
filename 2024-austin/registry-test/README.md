@@ -32,7 +32,7 @@ kubectx south
 linkerd --context=north multicluster link --cluster-name north |
   kubectl --context=south apply -f -
 ---
-
+#! north cluster 
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
@@ -46,6 +46,19 @@ spec:
   - service: south-metaphor-development-south
     weight: 50
 
+#! south cluster 
+apiVersion: split.smi-spec.io/v1alpha2
+kind: TrafficSplit
+metadata:
+  name: south-metaphor-development-split
+  namespace: development
+spec:
+  service: south-metaphor-development
+  backends:
+  - service: south-metaphor-development
+    weight: 0
+  - service: north-metaphor-development-north
+    weight: 100
 
 
 

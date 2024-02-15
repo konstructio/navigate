@@ -31,6 +31,7 @@ spec:
               key: token
         extraArgs:
         - --txt-owner-id=north
+        - --txt-prefix=north.
     chart: external-dns
   destination:
     name: north
