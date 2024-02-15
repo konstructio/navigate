@@ -1,0 +1,32 @@
+metaphor:
+  annotations:
+    linkerd.io/inject: "enabled"
+  labels:
+    mirror.linkerd.io/exported: "true"
+  image:
+    tag: 0.1.0-2024-navigate-austin
+  ingress:
+    className: nginx
+    enabled: false
+    annotations:
+      cert-manager.io/cluster-issuer: 'letsencrypt-prod'
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+    hosts:
+      - host: metaphor-south.freegitopsmagic.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: metaphor-tls
+        hosts:
+          - metaphor-south.freegitopsmagic.com
+  metaphor: # do we need these two urls?
+    host: https://metaphor-south.freegitopsmagic.com/api
+    console: https://kubefirst.freegitopsmagic.com
+  
+  useExternalSecret: false
+
+  # clusterSecretStoreName: south-vault-kv-secret
+  configs:
+    configOne: south-cluster-override-one
+    configTwo: south-cluster-override-two
