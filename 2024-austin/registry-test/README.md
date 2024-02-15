@@ -18,5 +18,36 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry-test/registry.yaml
 # watch the registry in argocd ui
+
+civo k8s config --region nyc1 north --save
+civo k8s config --region lon1 south --save
+
+kubectx north
+linkerd --context=south multicluster link --cluster-name south |
+  kubectl --context=north apply -f -
+---
+#! experimental 
+#! enabled ingress in south 
+kubectx south
+linkerd --context=north multicluster link --cluster-name north |
+  kubectl --context=south apply -f -
+---
+
+apiVersion: split.smi-spec.io/v1alpha2
+kind: TrafficSplit
+metadata:
+  name: north-metaphor-development-split
+  namespace: development
+spec:
+  service: north-metaphor-development
+  backends:
+  - service: north-metaphor-development
+    weight: 50
+  - service: south-metaphor-development-south
+    weight: 50
+
+
+
+
 ```
 3:28
