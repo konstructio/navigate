@@ -16,6 +16,3 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry-test/registry.yaml
 # watch the registry in argocd ui
 ```
-- missed ingress-nginx, once the linkerd child started the whole things went, manually deleted pod
-- multiple pod restarts needed. need to hold until the control plane is completely ready
-- smi was missing, added to gitops
