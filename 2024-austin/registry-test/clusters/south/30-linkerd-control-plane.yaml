@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: east-linkerd-components
+  name: south-linkerd-control-plane
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kubefirst/navigate
-    path: 2024-austin/registry-test/clusters/east/linkerd
+    path: 2024-austin/registry-test/clusters/south/linkerd-control-plane
     targetRevision: east-west
   destination:
     name: in-cluster
