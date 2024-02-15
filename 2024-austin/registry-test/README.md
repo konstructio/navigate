@@ -20,5 +20,3 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 # watch the registry in argocd ui
 ```
 3:28
-
-add parallelism to terarform provider
