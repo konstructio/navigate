@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: south-linkerd-crds
+  name: south-linkerd-smi
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: '20'
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: '40'
 spec:
   project: default
   source:
-    chart: linkerd-crds
-    repoURL: https://helm.linkerd.io/stable
-    targetRevision: 1.8.0
+    chart: linkerd-smi
+    repoURL: https://linkerd.github.io/linkerd-smi
+    targetRevision: 1.0.4
   destination:
     name: south
-    namespace: linkerd
+    namespace: linkerd-smi
   syncPolicy:
     automated:
       prune: true

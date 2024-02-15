@@ -90,7 +90,7 @@ spec:
             - app.kubernetes.io/name=proxy-injector
             - --use-kubeconfig-in-cluster
             - "false"
-          image: public.ecr.aws/kubefirst/kubernetes-toolkit:0.0.8
+          image: public.ecr.aws/kubefirst/kubernetes-toolkit:0.1.2
           imagePullPolicy: IfNotPresent
           name: wait
           env:
@@ -126,7 +126,7 @@ spec:
             - app.kubernetes.io/name=destination
             - --use-kubeconfig-in-cluster
             - "false"
-          image: public.ecr.aws/kubefirst/kubernetes-toolkit:0.0.8
+          image: public.ecr.aws/kubefirst/kubernetes-toolkit:0.1.2
           imagePullPolicy: IfNotPresent
           name: wait
           env:
