@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: south-linkerd-viz
+  name: south-linkerd-multicluster
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: '0'
+    argocd.argoproj.io/sync-wave: '40'
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    chart: linkerd-viz
+    chart: linkerd-multicluster
     repoURL: https://helm.linkerd.io/stable
-    targetRevision: 30.12.9
+    targetRevision: 30.11.9
   destination:
     name: south
-    namespace: linkerd-viz
+    namespace: linkerd-multicluster
   syncPolicy:
     automated:
       prune: true
