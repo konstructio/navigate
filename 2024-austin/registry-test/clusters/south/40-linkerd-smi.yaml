@@ -1,24 +1,24 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: south-linkerd-smi
-  namespace: argocd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
-  annotations:
-    argocd.argoproj.io/sync-wave: '40'
-spec:
-  project: default
-  source:
-    chart: linkerd-smi
-    repoURL: https://linkerd.github.io/linkerd-smi
-    targetRevision: 1.0.4
-  destination:
-    name: south
-    namespace: linkerd-smi
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: south-linkerd-smi
+#   namespace: argocd
+#   finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+#   annotations:
+#     argocd.argoproj.io/sync-wave: '40'
+# spec:
+#   project: default
+#   source:
+#     chart: linkerd-smi
+#     repoURL: https://linkerd.github.io/linkerd-smi
+#     targetRevision: 1.0.4
+#   destination:
+#     name: south
+#     namespace: linkerd-smi
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
