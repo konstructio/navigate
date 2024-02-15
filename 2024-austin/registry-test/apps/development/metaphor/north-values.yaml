@@ -7,7 +7,7 @@ metaphor:
     tag: 0.1.0-2024-navigate-austin
   ingress:
     className: nginx
-    enabled: false
+    enabled: true
     annotations:
       cert-manager.io/cluster-issuer: 'letsencrypt-prod'
       nginx.ingress.kubernetes.io/service-upstream: "true"
