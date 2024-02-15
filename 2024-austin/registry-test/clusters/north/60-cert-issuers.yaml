@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/kubefirst/navigate.git
     path: 2024-austin/registry-test/clusters/north/cert-issuers
-    targetRevision: east-west
+    targetRevision: HEAD
   destination:
     name: north
     namespace: cert-manager
