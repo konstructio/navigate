@@ -8,6 +8,9 @@ k3d cluster create kubefirst --agents "1" --agents-memory "4096m" \
 
 kubectl -n crossplane-system create secret generic crossplane-secrets --from-literal=CIVO_TOKEN=$CIVO_TOKEN --from-literal=TF_VAR_civo_token=$CIVO_TOKEN
 
+# wait for argocd pods in k3d to be healthy
+watch kubectl get pods -A
+
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
 
 # get the argocd root password
@@ -16,3 +19,6 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry-test/registry.yaml
 # watch the registry in argocd ui
 ```
+3:28
+
+add parallelism to terarform provider
