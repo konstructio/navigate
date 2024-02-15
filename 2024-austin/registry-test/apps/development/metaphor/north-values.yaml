@@ -1,9 +1,8 @@
 metaphor:
   annotations:
     linkerd.io/inject: "enabled"
-    # config.linkerd.io/enable-debug-sidecar: "true"
-  # labels:
-  #   mirror.linkerd.io/exported: "true"
+  labels:
+    mirror.linkerd.io/exported: "true"
   image:
     tag: 0.1.0-2024-navigate-austin
   ingress:
@@ -13,21 +12,21 @@ metaphor:
       cert-manager.io/cluster-issuer: 'letsencrypt-prod'
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts:
-      - host: metaphor-west.freegitopsmagic.com
+      - host: metaphor-north.freegitopsmagic.com
         paths:
           - path: /
             pathType: Prefix
     tls:
       - secretName: metaphor-tls
         hosts:
-          - metaphor-west.freegitopsmagic.com
+          - metaphor-north.freegitopsmagic.com
   metaphor: # do we need these two urls?
-    host: https://metaphor-west.freegitopsmagic.com/api
+    host: https://metaphor-north.freegitopsmagic.com/api
     console: https://kubefirst.freegitopsmagic.com
   
   useExternalSecret: false
 
-  # clusterSecretStoreName: west-vault-kv-secret
+  # clusterSecretStoreName: north-vault-kv-secret
   configs:
-    configOne: west-cluster-override-one
-    configTwo: west-cluster-override-two
+    configOne: north-cluster-override-one
+    configTwo: north-cluster-override-two
