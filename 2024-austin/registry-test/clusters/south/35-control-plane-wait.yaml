@@ -68,7 +68,7 @@ spec:
       volumes:
         - name: kubeconfig
           secret:
-            secretName: west-kubeconfig
+            secretName: south-kubeconfig
 ---
 apiVersion: batch/v1
 kind: Job
@@ -104,7 +104,7 @@ spec:
       volumes:
         - name: kubeconfig
           secret:
-            secretName: west-kubeconfig
+            secretName: south-kubeconfig
 ---
 apiVersion: batch/v1
 kind: Job
@@ -140,4 +140,4 @@ spec:
       volumes:
         - name: kubeconfig
           secret:
-            secretName: west-kubeconfig
+            secretName: south-kubeconfig
