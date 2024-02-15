@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: south-cert-issuers
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: '70'
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/kubefirst/navigate.git
+    path: 2024-austin/registry-test/clusters/south/cert-issuers
+    targetRevision: east-west
+  destination:
+    name: south
+    namespace: cert-manager
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
