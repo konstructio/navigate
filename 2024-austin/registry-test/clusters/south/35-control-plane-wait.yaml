@@ -2,13 +2,13 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: k8s-toolkit-eso
-  namespace: linkerd
+  namespace: argocd
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: k8s-toolkit-eso
-  namespace: linkerd
+  namespace: argocd
 rules:
   - apiGroups:
       - apps
@@ -24,7 +24,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: k8s-toolkit-eso
-  namespace: linkerd
+  namespace: argocd
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -32,13 +32,13 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: k8s-toolkit-eso
-    namespace: linkerd
+    namespace: argocd
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: '20'
+    argocd.argoproj.io/sync-wave: '35'
   name: wait-upstream-linkerd-identity
   namespace: argocd
 spec:
@@ -74,9 +74,9 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: '20'
+    argocd.argoproj.io/sync-wave: '35'
   name: wait-proxy-injector
-  namespace: linkerd
+  namespace: argocd
 spec:
   template:
     spec:
@@ -110,9 +110,9 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: '20'
+    argocd.argoproj.io/sync-wave: '35'
   name: wait-destination
-  namespace: linkerd
+  namespace: argocd
 spec:
   template:
     spec:

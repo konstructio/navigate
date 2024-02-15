@@ -3,10 +3,10 @@ kind: Application
 metadata:
   name: south-linkerd-control-plane
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: '0'
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: '30'
 spec:
   project: default
   source:

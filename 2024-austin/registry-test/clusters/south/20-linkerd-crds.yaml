@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: south-linkerd-components
+  name: south-linkerd-crds-xxx
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: '20'
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/kubefirst/navigate.git
-    path: 2024-austin/registry-test/clusters/south/linkerd-crds
-    targetRevision: east-west
+    chart: linkerd-crds
+    repoURL: https://helm.linkerd.io/stable
+    targetRevision: 1.8.0
   destination:
-    name: in-cluster
-    namespace: argocd
+    name: south
+    namespace: linkerd
   syncPolicy:
     automated:
       prune: true
