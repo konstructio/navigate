@@ -117,7 +117,6 @@ resource "kubernetes_secret_v1" "external_dns" {
   }
   data = {
     token = var.cloudflare_api_token
-    token = var.cloudflare_origin_issuer_token
   }
   type = "Opaque"
 }
