@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: ghcr.io/cloudflare/origin-ca-issuer-charts/origin-ca-issuer
+    repoURL: ghcr.io/cloudflare/origin-ca-issuer-charts
     chart: origin-ca-issuer
-    targetRevision: v0.5.2
+    targetRevision: 0.5.2
     helm:
       values: |-
         global:

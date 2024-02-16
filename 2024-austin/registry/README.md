@@ -23,7 +23,11 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 
 2m16s61
 
-kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry/registry.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/cloudflare/2024-austin/registry/registry.yaml
+
+helm install -n cert-manager --name origin-ca-issuer oci://ghcr.io/cloudflare/origin-ca-issuer-charts/origin-ca-issuer --version 0.5.2
+
+
 # watch the registry in argocd ui
 
 civo k8s config --region nyc1 dublin --save
@@ -74,31 +78,25 @@ spec:
 ```
 
 ```yaml
-apiVersion: external-secrets.io/v1beta1
-kind: ExternalSecret
+apiVersion: v1
+kind: Secret
 metadata:
-  name: cloudflare-secrets
+  name: origin-ca-issuer-repository
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"
-spec:
-  target:
-    name: cloudflare-secrets
-  secretStoreRef:
-    kind: ClusterSecretStore
-    name: vault-kv-secret
-  refreshInterval: 10s
-  data:
-  - remoteRef:
-      key: cloudflare
-      property: origin-ca-api-key
-    secretKey: origin-ca-api-key
+  labels:
+    argocd.argoproj.io/secret-type: repository
+type: Opaque
+stringData:
+  url: ghcr.io/cloudflare/origin-ca-issuer-charts/origin-ca-issuer
+  name: origin-ca-issuer
+  type: helm
+  enableOCI: "true"
 ---
 apiVersion: cert-manager.k8s.cloudflare.com/v1
 kind: OriginIssuer
 metadata:
   name: cloudflare-origin-issuer
-  namespace: argocd
+  namespace: development
 spec:
   requestType: OriginECC
   auth:
