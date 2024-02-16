@@ -30,25 +30,25 @@ helm install -n cert-manager --name origin-ca-issuer oci://ghcr.io/cloudflare/or
 
 # watch the registry in argocd ui
 
-civo k8s config --region nyc1 dublin --save
-civo k8s config --region lon1 south --save
+civo k8s config --region lon1 dublin --save
+civo k8s config --region nyc1 denver --save
 
-kubectx dublin
-linkerd --context=south multicluster link --cluster-name south |
-  kubectl --context=dublin apply -f -
+kubectx denver
+linkerd --context=dublin multicluster link --cluster-name dublin |
+  kubectl --context=denver apply -f -
 
 #! dublin cluster 
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
-  name: dublin-metaphor-development-split
+  name: denver-metaphor-development-split
   namespace: development
 spec:
-  service: dublin-metaphor-development
+  service: denver-metaphor-development
   backends:
-  - service: dublin-metaphor-development
+  - service: denver-metaphor-development
     weight: 20
-  - service: south-metaphor-development-south
+  - service: dublin-metaphor-development-dublin
     weight: 80
 
 ---------
