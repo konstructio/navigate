@@ -23,7 +23,7 @@ spec:
         }
       }
       provider "civo" {
-        region = "nyc1"
+        region = "lon1"
       }
   credentials:
   - filename: gen-nothing
