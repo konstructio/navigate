@@ -29,9 +29,9 @@ spec:
             secretKeyRef:
               name: external-dns-secrets
               key: token
-        extraArgs:
-        - --txt-owner-id=north
-        - --txt-prefix=north.
+        # extraArgs:
+        # - --txt-owner-id=north
+        # - --txt-prefix=north.
     chart: external-dns
   destination:
     name: north
