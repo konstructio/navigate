@@ -33,23 +33,23 @@ helm install -n cert-manager --name origin-ca-issuer oci://ghcr.io/cloudflare/or
 civo k8s config --region lon1 dublin --save
 civo k8s config --region nyc1 denver --save
 
-kubectx denver
-linkerd --context=dublin multicluster link --cluster-name dublin |
-  kubectl --context=denver apply -f -
+kubectx dublin
+linkerd --context=denver multicluster link --cluster-name denver |
+  kubectl --context=dublin apply -f -
 
 #! dublin cluster 
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
-  name: denver-metaphor-development-split
+  name: dublin-metaphor-development-split
   namespace: development
 spec:
-  service: denver-metaphor-development
+  service: dublin-metaphor-development
   backends:
-  - service: denver-metaphor-development
-    weight: 20
-  - service: dublin-metaphor-development-dublin
-    weight: 80
+  - service: dublin-metaphor-development
+    weight: 100
+  - service: denver-metaphor-development-denver
+    weight: 0
 
 ---------
 
