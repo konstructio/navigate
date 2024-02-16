@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: south-external-dns
+  name: north-external-dns
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '50'
@@ -18,23 +18,20 @@ spec:
         serviceAccount:
           create: true
           name: external-dns
-        provider: civo
+        provider: cloudflare
         sources:
         - ingress
         domainFilters:
         - civonetes.com
         env:
-        - name: CIVO_TOKEN
+        - name: CF_API_TOKEN
           valueFrom:
             secretKeyRef:
               name: external-dns-secrets
               key: token
-        # extraArgs:
-        # - --txt-owner-id=south
-        # - --txt-prefix=south.
     chart: external-dns
   destination:
-    name: south
+    name: north
     namespace: external-dns
   syncPolicy:
     automated:

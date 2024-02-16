@@ -12,22 +12,22 @@ metaphor:
       cert-manager.io/cluster-issuer: 'letsencrypt-prod'
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts:
-      - host: metaphor-south.freegitopsmagic.com
+      - host: metaphor-south.civonetes.com
         paths:
           - path: /
             pathType: Prefix
-      - host: metaphor.freegitopsmagic.com
+      - host: metaphor.civonetes.com
         paths:
           - path: /
             pathType: Prefix
     tls:
       - secretName: metaphor-tls
         hosts:
-          - metaphor.freegitopsmagic.com
-          - metaphor-south.freegitopsmagic.com
+          - metaphor.civonetes.com
+          - metaphor-south.civonetes.com
   metaphor:
-    host: https://metaphor-south.freegitopsmagic.com/api
-    console: https://kubefirst.freegitopsmagic.com
+    host: https://metaphor-south.civonetes.com/api
+    console: https://kubefirst.civonetes.com
   useExternalSecret: false
   configs:
     configOne: south-cluster-override-one

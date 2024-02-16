@@ -22,7 +22,7 @@ spec:
         sources:
         - ingress
         domainFilters:
-        - freegitopsmagic.com
+        - civonetes.com
         env:
         - name: CIVO_TOKEN
           valueFrom:
