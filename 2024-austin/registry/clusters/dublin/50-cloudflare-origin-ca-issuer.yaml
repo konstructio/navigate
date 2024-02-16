@@ -22,7 +22,7 @@ spec:
             tag: v0.6.1
             pullPolicy: Always
   destination:
-    name: in-cluster
+    name: dublin
     namespace: cert-manager
   syncPolicy:
     automated:

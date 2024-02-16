@@ -77,13 +77,13 @@ spec:
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: cloudflare-creds
+  name: cloudflare-secrets
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
   target:
-    name: cloudflare-creds
+    name: cloudflare-secrets
   secretStoreRef:
     kind: ClusterSecretStore
     name: vault-kv-secret
@@ -104,6 +104,6 @@ spec:
   auth:
     serviceKeyRef:
       key: origin-ca-api-key
-      name: cloudflare-creds
+      name: cloudflare-secrets
 
 ```

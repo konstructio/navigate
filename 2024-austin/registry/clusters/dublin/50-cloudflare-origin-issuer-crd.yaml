@@ -12,7 +12,7 @@ spec:
     path: deploy/crds
     targetRevision: v0.6.1
   destination:
-    name: in-cluster
+    name: dublin
     namespace: cert-manager
   syncPolicy:
     automated:
