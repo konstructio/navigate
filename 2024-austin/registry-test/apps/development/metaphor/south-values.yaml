@@ -16,17 +16,19 @@ metaphor:
         paths:
           - path: /
             pathType: Prefix
+      - host: metaphor.freegitopsmagic.com
+        paths:
+          - path: /
+            pathType: Prefix
     tls:
       - secretName: metaphor-tls
         hosts:
+          - metaphor.freegitopsmagic.com
           - metaphor-south.freegitopsmagic.com
-  metaphor: # do we need these two urls?
+  metaphor:
     host: https://metaphor-south.freegitopsmagic.com/api
     console: https://kubefirst.freegitopsmagic.com
-  
   useExternalSecret: false
-
-  # clusterSecretStoreName: south-vault-kv-secret
   configs:
     configOne: south-cluster-override-one
     configTwo: south-cluster-override-two
