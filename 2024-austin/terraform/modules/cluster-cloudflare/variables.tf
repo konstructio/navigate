@@ -3,6 +3,14 @@ variable "civo_token" {
   type = string
 }
 
+variable "cloudflare_api_token" {
+  type = string
+}
+
+variable "cloudflare_origin_issuer_token" {
+  type = string
+}
+
 variable "cluster_name" {
   type    = string
 }

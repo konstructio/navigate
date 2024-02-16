@@ -7,10 +7,10 @@ k3d cluster create kubefirst --agents "1" --agents-memory "4096m" \
     --volume $PWD/2024-austin/manifests/bootstrap-k3d.yaml:/var/lib/rancher/k3s/server/manifests/bootstrap-k3d.yaml
 
 kubectl -n crossplane-system create secret generic crossplane-secrets \
+  --from-literal=CIVO_TOKEN=$CIVO_TOKEN \
   --from-literal=TF_VAR_civo_token=$CIVO_TOKEN \
-  --from-literal=TF_VAR_cloudflare_origin_issuer_token=$CLOUDFLARE_ORIGIN_CA_KEY \
-  --from-literal=TF_VAR_cloudflare_api_token=$CLOUDFLARE_API_TOKEN
-  # --from-literal=CIVO_TOKEN=$CIVO_TOKEN \ <- remember this trailing do i need this?>
+  --from-literal=TF_VAR_cloudflare_api_token=$CLOUDFLARE_API_TOKEN \
+  --from-literal=TF_VAR_cloudflare_origin_issuer_token=$CLOUDFLARE_ORIGIN_CA_KEY
 
 
 # wait for argocd pods in k3d to be healthy
@@ -72,12 +72,38 @@ spec:
 
 
 ```
-3:28
 
+```yaml
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: cloudflare-creds
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  target:
+    name: cloudflare-creds
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: vault-kv-secret
+  refreshInterval: 10s
+  data:
+  - remoteRef:
+      key: cloudflare
+      property: origin-ca-api-key
+    secretKey: origin-ca-api-key
+---
+apiVersion: cert-manager.k8s.cloudflare.com/v1
+kind: OriginIssuer
+metadata:
+  name: cloudflare-origin-issuer
+  namespace: argocd
+spec:
+  requestType: OriginECC
+  auth:
+    serviceKeyRef:
+      key: origin-ca-api-key
+      name: cloudflare-creds
 
-once we have south
-- link the  other way 
-
-
-
-
+```
