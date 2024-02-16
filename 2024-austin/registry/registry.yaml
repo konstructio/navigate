@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: registry
+  name: registry-cloudflare
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '0'
@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/kubefirst/navigate.git
     path: 2024-austin/registry
-    targetRevision: HEAD
+    targetRevision: cloudflare
   destination:
     name: in-cluster
     namespace: argocd
