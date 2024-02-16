@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dublin-cloudflare-origin-issuer-crd
+  name: denver-linkerd-crds
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: '50'
+    argocd.argoproj.io/sync-wave: '20'
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/cloudflare/origin-ca-issuer
-    path: deploy/crds
-    targetRevision: v0.6.1
+    chart: linkerd-crds
+    repoURL: https://helm.linkerd.io/stable
+    targetRevision: 1.8.0
   destination:
-    name: dublin
-    namespace: cert-manager
+    name: denver
+    namespace: linkerd
   syncPolicy:
     automated:
       prune: true

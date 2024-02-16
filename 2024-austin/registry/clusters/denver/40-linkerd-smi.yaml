@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dublin-cloudflare-origin-issuer-crd
+  name: denver-linkerd-smi
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: '50'
+    argocd.argoproj.io/sync-wave: '40'
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/cloudflare/origin-ca-issuer
-    path: deploy/crds
-    targetRevision: v0.6.1
+    chart: linkerd-smi
+    repoURL: https://linkerd.github.io/linkerd-smi
+    targetRevision: 1.0.4
   destination:
-    name: dublin
-    namespace: cert-manager
+    name: denver
+    namespace: linkerd-smi
   syncPolicy:
     automated:
       prune: true

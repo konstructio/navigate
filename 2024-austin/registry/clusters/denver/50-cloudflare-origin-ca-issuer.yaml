@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dublin-cloudflare-cloudflare-origin-ca-issuer
+  name: denver-cloudflare-cloudflare-origin-ca-issuer
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '50'
@@ -24,7 +24,7 @@ spec:
             tag: v0.6.1
             pullPolicy: Always
   destination:
-    name: dublin
+    name: denver
     namespace: cert-manager
   syncPolicy:
     automated:

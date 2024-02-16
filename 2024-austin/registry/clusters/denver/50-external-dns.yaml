@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: denver-external-dns
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '50'
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://kubernetes-sigs.github.io/external-dns
+    targetRevision: 1.14.3
+    helm:
+      releaseName: external-dns
+      values: |
+        serviceAccount:
+          create: true
+          name: external-dns
+        provider: cloudflare
+        sources:
+        - ingress
+        domainFilters:
+        - kubesecond.com
+        env:
+        - name: CF_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: external-dns-secrets
+              key: token
+    chart: external-dns
+  destination:
+    name: denver
+    namespace: external-dns
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

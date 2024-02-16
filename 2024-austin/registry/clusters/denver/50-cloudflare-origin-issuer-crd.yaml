@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dublin-cloudflare-origin-issuer-crd
+  name: denver-cloudflare-origin-issuer-crd
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '50'
@@ -14,7 +14,7 @@ spec:
     path: deploy/crds
     targetRevision: v0.6.1
   destination:
-    name: dublin
+    name: denver
     namespace: cert-manager
   syncPolicy:
     automated:

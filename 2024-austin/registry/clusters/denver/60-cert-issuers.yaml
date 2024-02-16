@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dublin-cloudflare-origin-issuer-crd
+  name: denver-cert-issuers
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: '50'
+    argocd.argoproj.io/sync-wave: '60'
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/cloudflare/origin-ca-issuer
-    path: deploy/crds
-    targetRevision: v0.6.1
+    repoURL: https://github.com/kubefirst/navigate.git
+    path: 2024-austin/registry/clusters/denver/cert-issuers
+    targetRevision: cloudflare
   destination:
-    name: dublin
+    name: denver
     namespace: cert-manager
   syncPolicy:
     automated:

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dublin-cloudflare-origin-issuer-crd
+  name: denver-cert-manager
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '50'
@@ -10,11 +10,17 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/cloudflare/origin-ca-issuer
-    path: deploy/crds
-    targetRevision: v0.6.1
+    repoURL: https://charts.jetstack.io
+    targetRevision: v1.14.1
+    helm:
+      values: |-
+        serviceAccount:
+          create: true
+          name: cert-manager
+        installCRDs: true
+    chart: cert-manager
   destination:
-    name: dublin
+    name: denver
     namespace: cert-manager
   syncPolicy:
     automated:
