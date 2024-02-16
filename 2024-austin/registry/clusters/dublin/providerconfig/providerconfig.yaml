@@ -1,14 +1,14 @@
 apiVersion: tf.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
-  name: north
+  name: dublin
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
   configuration: |
       terraform {
         backend "kubernetes" {
-          secret_suffix     = "providerconfig-north"
+          secret_suffix     = "providerconfig-dublin"
           namespace         = "crossplane-system"
           in_cluster_config = true
         }

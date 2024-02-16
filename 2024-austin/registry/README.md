@@ -26,23 +26,23 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry-test/registry.yaml
 # watch the registry in argocd ui
 
-civo k8s config --region nyc1 north --save
+civo k8s config --region nyc1 dublin --save
 civo k8s config --region lon1 south --save
 
-kubectx north
+kubectx dublin
 linkerd --context=south multicluster link --cluster-name south |
-  kubectl --context=north apply -f -
+  kubectl --context=dublin apply -f -
 
-#! north cluster 
+#! dublin cluster 
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
-  name: north-metaphor-development-split
+  name: dublin-metaphor-development-split
   namespace: development
 spec:
-  service: north-metaphor-development
+  service: dublin-metaphor-development
   backends:
-  - service: north-metaphor-development
+  - service: dublin-metaphor-development
     weight: 20
   - service: south-metaphor-development-south
     weight: 80
@@ -50,7 +50,7 @@ spec:
 ---------
 
 kubectx south
-linkerd --context=north multicluster link --cluster-name north |
+linkerd --context=dublin multicluster link --cluster-name dublin |
   kubectl --context=south apply -f -
 
 #! south cluster 
@@ -64,7 +64,7 @@ spec:
   backends:
   - service: south-metaphor-development
     weight: 50
-  - service: north-metaphor-development-north
+  - service: dublin-metaphor-development-dublin
     weight: 50
 
 

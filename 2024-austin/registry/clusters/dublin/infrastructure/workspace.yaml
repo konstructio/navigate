@@ -1,16 +1,16 @@
 apiVersion: tf.upbound.io/v1beta1
 kind: Workspace
 metadata:
-  name: north-infrastructure
+  name: dublin-infrastructure
 spec:
   providerConfigRef: 
-    name: north
+    name: dublin
   forProvider:
     source: Remote
     module: git::https://github.com/kubefirst/navigate.git//2024-austin/terraform/modules/cluster-cloudflare?ref=cloudflare
     vars:
     - key: cluster_name
-      value: north
+      value: dublin
     - key: node_count
       value: "3"
     - key: node_type

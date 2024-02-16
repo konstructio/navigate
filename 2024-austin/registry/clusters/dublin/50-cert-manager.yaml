@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: north-cert-manager
+  name: dublin-cert-manager
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '50'
@@ -20,7 +20,7 @@ spec:
         installCRDs: true
     chart: cert-manager
   destination:
-    name: north
+    name: dublin
     namespace: cert-manager
   syncPolicy:
     automated:

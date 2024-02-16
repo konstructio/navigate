@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: north-linkerd-control-plane
+  name: dublin-linkerd-control-plane
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '30'
@@ -50,7 +50,7 @@ spec:
           PhpbDSjCABK4tNZMDBn/3f0=
           -----END CERTIFICATE----- 
   destination:
-    name: north
+    name: dublin
     namespace: linkerd
   syncPolicy:
     automated:

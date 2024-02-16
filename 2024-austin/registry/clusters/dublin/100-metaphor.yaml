@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: north-metaphor-development
+  name: dublin-metaphor-development
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '100'
@@ -15,9 +15,9 @@ spec:
     targetRevision: cloudflare
     helm:
       valueFiles:
-        - north-values.yaml
+        - dublin-values.yaml
   destination:
-    name: north
+    name: dublin
     namespace: development
   syncPolicy:
     automated:

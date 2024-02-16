@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: north-k8s-toolkit-eso
+  name: dublin-k8s-toolkit-eso
   namespace: argocd
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: north-k8s-toolkit-eso
+  name: dublin-k8s-toolkit-eso
   namespace: argocd
 rules:
   - apiGroups:
@@ -23,15 +23,15 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: north-k8s-toolkit-eso
+  name: dublin-k8s-toolkit-eso
   namespace: argocd
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: north-k8s-toolkit-eso
+  name: dublin-k8s-toolkit-eso
 subjects:
   - kind: ServiceAccount
-    name: north-k8s-toolkit-eso
+    name: dublin-k8s-toolkit-eso
     namespace: argocd
 ---
 apiVersion: batch/v1
@@ -39,7 +39,7 @@ kind: Job
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: '35'
-  name: north-wait-upstream-linkerd-identity
+  name: dublin-wait-upstream-linkerd-identity
   namespace: argocd
 spec:
   template:
@@ -64,18 +64,18 @@ spec:
             - mountPath: /root/.kube
               name: kubeconfig
       restartPolicy: OnFailure
-      serviceAccountName: north-k8s-toolkit-eso
+      serviceAccountName: dublin-k8s-toolkit-eso
       volumes:
         - name: kubeconfig
           secret:
-            secretName: north-kubeconfig
+            secretName: dublin-kubeconfig
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: '35'
-  name: north-wait-proxy-injector
+  name: dublin-wait-proxy-injector
   namespace: argocd
 spec:
   template:
@@ -100,18 +100,18 @@ spec:
             - mountPath: /root/.kube
               name: kubeconfig
       restartPolicy: OnFailure
-      serviceAccountName: north-k8s-toolkit-eso
+      serviceAccountName: dublin-k8s-toolkit-eso
       volumes:
         - name: kubeconfig
           secret:
-            secretName: north-kubeconfig
+            secretName: dublin-kubeconfig
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: '35'
-  name: north-wait-destination
+  name: dublin-wait-destination
   namespace: argocd
 spec:
   template:
@@ -136,8 +136,8 @@ spec:
             - mountPath: /root/.kube
               name: kubeconfig
       restartPolicy: OnFailure
-      serviceAccountName: north-k8s-toolkit-eso
+      serviceAccountName: dublin-k8s-toolkit-eso
       volumes:
         - name: kubeconfig
           secret:
-            secretName: north-kubeconfig
+            secretName: dublin-kubeconfig

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: north-external-dns
+  name: dublin-external-dns
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '50'
@@ -31,7 +31,7 @@ spec:
               key: token
     chart: external-dns
   destination:
-    name: north
+    name: dublin
     namespace: external-dns
   syncPolicy:
     automated:

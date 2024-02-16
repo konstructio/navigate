@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: north-linkerd-crds
+  name: dublin-linkerd-crds
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '20'
@@ -14,7 +14,7 @@ spec:
     repoURL: https://helm.linkerd.io/stable
     targetRevision: 1.8.0
   destination:
-    name: north
+    name: dublin
     namespace: linkerd
   syncPolicy:
     automated:

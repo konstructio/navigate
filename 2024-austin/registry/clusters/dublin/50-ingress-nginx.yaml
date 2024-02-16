@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: north-ingress-nginx
+  name: dublin-ingress-nginx
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '50'
@@ -28,7 +28,7 @@ spec:
             enable-ssl-passthrough: true    
     chart: ingress-nginx
   destination:
-    name: north
+    name: dublin
     namespace: ingress-nginx
   syncPolicy:
     automated:

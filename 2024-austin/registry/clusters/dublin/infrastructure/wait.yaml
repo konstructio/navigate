@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: north-infrastructure-wait
+  name: dublin-infrastructure-wait
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "20"
@@ -16,6 +16,6 @@ spec:
         - /bin/sh
         - -c
         - |
-          while ! kubectl wait --for=jsonpath='{.status.conditions[0].status}'='True' workspace/north-infrastructure; do echo "waiting for cluster to provision"; sleep 5; done
+          while ! kubectl wait --for=jsonpath='{.status.conditions[0].status}'='True' workspace/dublin-infrastructure; do echo "waiting for cluster to provision"; sleep 5; done
       restartPolicy: Never
   backoffLimit: 1

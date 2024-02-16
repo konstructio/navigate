@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: north-linkerd-smi
+  name: dublin-linkerd-smi
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '40'
@@ -14,7 +14,7 @@ spec:
     repoURL: https://linkerd.github.io/linkerd-smi
     targetRevision: 1.0.4
   destination:
-    name: north
+    name: dublin
     namespace: linkerd-smi
   syncPolicy:
     automated:
