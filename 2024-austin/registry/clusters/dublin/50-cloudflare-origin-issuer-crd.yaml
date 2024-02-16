@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cloudflare-origin-issuer-crd
+  name: dublin-cloudflare-origin-issuer-crd
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '50'

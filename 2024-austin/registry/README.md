@@ -23,7 +23,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 
 2m16s61
 
-kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry-test/registry.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry/registry.yaml
 # watch the registry in argocd ui
 
 civo k8s config --region nyc1 dublin --save
