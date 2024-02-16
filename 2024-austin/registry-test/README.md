@@ -42,6 +42,37 @@ spec:
   - service: south-metaphor-development-south
     weight: 20
 
+---------
+
+kubectx south
+linkerd --context=north multicluster link --cluster-name north |
+  kubectl --context=south apply -f -
+
+#! south cluster 
+apiVersion: split.smi-spec.io/v1alpha2
+kind: TrafficSplit
+metadata:
+  name: south-metaphor-development-split
+  namespace: development
+spec:
+  service: south-metaphor-development
+  backends:
+  - service: south-metaphor-development
+    weight: 0
+  - service: north-metaphor-development-north
+    weight: 100
+
+
+
+
 
 ```
 3:28
+
+
+once we have south
+- link the  other way 
+
+
+
+
