@@ -16,6 +16,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 # get the argocd root password
 # visit the argocd ui
 
+2m16s61
+
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry-test/registry.yaml
 # watch the registry in argocd ui
 
@@ -25,13 +27,7 @@ civo k8s config --region lon1 south --save
 kubectx north
 linkerd --context=south multicluster link --cluster-name south |
   kubectl --context=north apply -f -
----
-#! experimental 
-#! enabled ingress in south 
-kubectx south
-linkerd --context=north multicluster link --cluster-name north |
-  kubectl --context=south apply -f -
----
+
 #! north cluster 
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
@@ -42,24 +38,9 @@ spec:
   service: north-metaphor-development
   backends:
   - service: north-metaphor-development
-    weight: 50
+    weight: 80
   - service: south-metaphor-development-south
-    weight: 50
-
-#! south cluster 
-apiVersion: split.smi-spec.io/v1alpha2
-kind: TrafficSplit
-metadata:
-  name: south-metaphor-development-split
-  namespace: development
-spec:
-  service: south-metaphor-development
-  backends:
-  - service: south-metaphor-development
-    weight: 0
-  - service: north-metaphor-development-north
-    weight: 100
-
+    weight: 20
 
 
 ```
