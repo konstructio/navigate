@@ -79,6 +79,9 @@ password: (paste from your clipboard)
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
 ```
 
+once all bootstrap items have synced, you should see the following in argo cd
+![](../images/bootstrap.png)
+
 ### apply the registry to provision new cloud infrastructure and bootstrap the cloud clusters
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry/registry.yaml
