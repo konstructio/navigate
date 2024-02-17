@@ -58,16 +58,27 @@ watch kubectl get pods -A
 ```
 note: use keystroke `Ctrl`+`c` to exit the watch command
 
-### get the argocd root password
+### copy the argocd root password to your clipboard
 ```sh
 kubectl -n argocd get secret/argocd-initial-admin-secret -ojsonpath='{.data.password}' | base64 -D | pbcopy
 ```
 
-### visit the argocd ui
+### port-forward to argocd ui
 ```sh
 kubectl -n argocd port-forward svc/argocd-server 8888:80 
+```
+
+If Argo CD becomes unresponsive in your browser at any time, you will need to refresh your port-forward. To do so, use 
+keystroke `Ctrl`+`c` to exit the port-forward command, and then reexecute the port-forward command
+
+The port-forward command above will tie up your terminal, please start a second terminal session to continue command executions. 
+
+### login to argocd
+```
 open http://localhost:8888
 ```
+username: `admin`
+password: (paste from your clipboard)
 
 ### bootstrap the `k3d` cluster with crossplane and install the terraform provider
 ```sh
