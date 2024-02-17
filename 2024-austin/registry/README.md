@@ -14,6 +14,12 @@
 - linkerd
     purpose: cli for linkerd control plane
     install: `brew install linkerd`
+- pbcopy
+    purpose: copy command results to the clipboard
+    install: `brew install pbcopy`
+- base64
+    purpose: string encoding
+    install: `brew install coreutils`
 - civo account
     - set nameserver records at your domain registrar to `ns0.civo.com` and `ns1.civo.com`
     - add your domain in your [civo dns](https://dashboard.civo.com/dns)
