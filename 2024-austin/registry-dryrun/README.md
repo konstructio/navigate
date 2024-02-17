@@ -1,6 +1,7 @@
 # TODO:
 - domain adjustment
 - tag
+- vanity dns on newyork / denver 
 
 # CIVO Navigate Workshops CIVO dns
 

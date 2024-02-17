@@ -12,22 +12,22 @@ metaphor:
       cert-manager.io/cluster-issuer: 'letsencrypt-prod'
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts:
-      - host: metaphor-austin.freegitopsmagic.com
+      - host: metaphor-austin.kubefirst.boo
         paths:
           - path: /
             pathType: Prefix
-      - host: metaphor.freegitopsmagic.com
+      - host: metaphor.kubefirst.boo
         paths:
           - path: /
             pathType: Prefix
     tls:
       - secretName: metaphor-tls
         hosts:
-          - metaphor.freegitopsmagic.com
-          - metaphor-austin.freegitopsmagic.com
+          - metaphor.kubefirst.boo
+          - metaphor-austin.kubefirst.boo
   metaphor:
-    host: https://metaphor-austin.freegitopsmagic.com/api
-    console: https://kubefirst.freegitopsmagic.com
+    host: https://metaphor-austin.kubefirst.boo/api
+    console: https://kubefirst.kubefirst.boo
   useExternalSecret: false
   configs:
     configOne: austin-cluster-override-one
