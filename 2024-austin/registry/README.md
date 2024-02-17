@@ -2,24 +2,18 @@
 # CIVO Navigate Workshops CIVO dns
 
 ### prerequisites
-- k3d: 
-    purpose: local kubernetes
-    install: `brew install k3d`
-- watch:
-    purpose: repeat a command to watch resources
-    install: `brew install watch`
-- kubectl
-    purpose: interact with kubernetes
-    install: `brew install kubectl`
-- linkerd
-    purpose: cli for linkerd control plane
-    install: `brew install linkerd`
-- pbcopy
-    purpose: copy command results to the clipboard
-    install: `brew install pbcopy`
-- base64
-    purpose: string encoding
-    install: `brew install coreutils`
+- k3d: local kubernetes
+    - install: `brew install k3d`
+- watch: repeat a command to watch resources
+    - install: `brew install watch`
+- kubectl: interact with kubernetes
+    - install: `brew install kubectl`
+- linkerd: cli for linkerd control plane
+    - install: `brew install linkerd`
+- pbcopy: copy command results to the clipboard
+    - install: `brew install pbcopy`
+- base64: string encoding
+    - install: `brew install coreutils`
 - civo account
     - set nameserver records at your domain registrar to `ns0.civo.com` and `ns1.civo.com`
     - add your domain in your [civo dns](https://dashboard.civo.com/dns)
