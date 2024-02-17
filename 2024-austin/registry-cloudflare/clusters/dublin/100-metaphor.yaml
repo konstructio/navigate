@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dublin-metaphor-development
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '100'
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/kubefirst/navigate
+    path: 2024-austin/registry-cloudflare/apps/development/metaphor
+    targetRevision: cloudflare
+    helm:
+      valueFiles:
+        - dublin-values.yaml
+  destination:
+    name: dublin
+    namespace: development
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
