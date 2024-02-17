@@ -5,6 +5,8 @@
 - kubectl
 - linkerd
 - civo token
+- cloudflare token
+- cloudflare origin ca key
 - dns
 
 ### clone the `navigate` git repository
