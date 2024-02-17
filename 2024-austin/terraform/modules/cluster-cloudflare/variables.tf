@@ -5,10 +5,12 @@ variable "civo_token" {
 
 variable "cloudflare_api_token" {
   type = string
+  default = "na"
 }
 
 variable "cloudflare_origin_issuer_token" {
   type = string
+  default = "na"
 }
 
 variable "cluster_name" {

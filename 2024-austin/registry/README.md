@@ -21,17 +21,28 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 # get the argocd root password
 # visit the argocd ui
 
-2m16s61
-
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/cloudflare/2024-austin/registry/registry.yaml
-
-helm install -n cert-manager --name origin-ca-issuer oci://ghcr.io/cloudflare/origin-ca-issuer-charts/origin-ca-issuer --version 0.5.2
 
 
 # watch the registry in argocd ui
 
 civo k8s config --region lon1 dublin --save
 civo k8s config --region nyc1 denver --save
+
+```yaml
+# goes to development namespace in workloads
+apiVersion: cert-manager.k8s.cloudflare.com/v1
+kind: OriginIssuer
+metadata:
+  name: cloudflare-origin-issuer
+  namespace: development
+spec:
+  requestType: OriginECC
+  auth:
+    serviceKeyRef:
+      key: origin-ca-api-key
+      name: cloudflare-secrets
+```
 
 kubectx dublin
 linkerd --context=denver multicluster link --cluster-name denver |
@@ -47,61 +58,29 @@ spec:
   service: dublin-metaphor-development
   backends:
   - service: dublin-metaphor-development
-    weight: 100
+    weight: 90
   - service: denver-metaphor-development-denver
-    weight: 0
+    weight: 10
 
 ---------
 
-kubectx south
+kubectx denver
 linkerd --context=dublin multicluster link --cluster-name dublin |
-  kubectl --context=south apply -f -
+  kubectl --context=denver apply -f -
 
-#! south cluster 
+#! denver cluster 
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
-  name: south-metaphor-development-split
+  name: denver-metaphor-development-split
   namespace: development
 spec:
-  service: south-metaphor-development
+  service: denver-metaphor-development
   backends:
-  - service: south-metaphor-development
+  - service: denver-metaphor-development
     weight: 50
   - service: dublin-metaphor-development-dublin
     weight: 50
 
-
-
-
-
-```
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: origin-ca-issuer-repository
-  namespace: argocd
-  labels:
-    argocd.argoproj.io/secret-type: repository
-type: Opaque
-stringData:
-  url: ghcr.io/cloudflare/origin-ca-issuer-charts/origin-ca-issuer
-  name: origin-ca-issuer
-  type: helm
-  enableOCI: "true"
----
-apiVersion: cert-manager.k8s.cloudflare.com/v1
-kind: OriginIssuer
-metadata:
-  name: cloudflare-origin-issuer
-  namespace: development
-spec:
-  requestType: OriginECC
-  auth:
-    serviceKeyRef:
-      key: origin-ca-api-key
-      name: cloudflare-secrets
 
 ```
