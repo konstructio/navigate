@@ -50,10 +50,13 @@ kubectl -n crossplane-system create secret generic crossplane-secrets \
 ```sh
 watch kubectl get pods -A
 ```
+note: use keystroke `Ctrl`+`c` to exit the watch command
+
 ### get the argocd root password
 ```sh
 kubectl -n argocd get secret/argocd-initial-admin-secret -ojsonpath='{.data.password}' | base64 -D | pbcopy
 ```
+
 ### visit the argocd ui
 ```sh
 kubectl -n argocd port-forward svc/argocd-server 8888:80 
