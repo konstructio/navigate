@@ -64,6 +64,10 @@ civo k8s config --region lon1 south --save
 we just created to new CIVO kubernetes clusters in multiple regions using Infrastructure as Code. Once the new clusters were ready, we used the Argo CD gitops engine to install a handfull of applications to make them ready to serve application traffic on the internet leveraging your dns zone. 
 (working...)
 
+### explore metaphor, your new demo application running in both clusters
+```sh
+open https://metaphor.com
+```
 
 ### link the north cluster with the south
 this command will take the necessary information from each kubeconfig and install a `Link` resource that will allow for traffic switching using the linkerd-smi `TrafficSplit`
