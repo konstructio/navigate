@@ -1,0 +1,39 @@
+metaphor:
+  annotations:
+    linkerd.io/inject: "enabled"
+  labels:
+    mirror.linkerd.io/exported: "true"
+  image:
+    tag: 0.1.0-2024-navigate-austin
+  ingress:
+    className: nginx
+    enabled: true
+    annotations:
+      # cert-manager.io/cluster-issuer: 'letsencrypt-prod'
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+      cert-manager.io/issuer: cloudflare-origin-issuer
+      cert-manager.io/issuer-kind: OriginIssuer
+      cert-manager.io/issuer-group: cert-manager.k8s.cloudflare.com
+      external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    hosts:
+      - host: metaphor-dublin.kubesecond.com
+        paths:
+          - path: /
+            pathType: Prefix
+      - host: metaphor.kubesecond.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: metaphor-tls
+        hosts:
+          - metaphor.kubesecond.com
+          - metaphor-dublin.kubesecond.com
+  metaphor:
+    host: https://metaphor-dublin.kubesecond.com/api
+    console: https://kubefirst.kubesecond.com
+  
+  useExternalSecret: false
+  configs:
+    configOne: dublin-cluster-override-one
+    configTwo: dublin-cluster-override-two

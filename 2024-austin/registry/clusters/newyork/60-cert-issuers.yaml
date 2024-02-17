@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: registry
+  name: newyork-cert-issuers
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '60'
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  annotations:
-    argocd.argoproj.io/sync-wave: '0'
 spec:
   project: default
   source:
     repoURL: https://github.com/kubefirst/navigate.git
-    path: 2024-austin/registry-test
+    path: 2024-austin/registry/clusters/newyork/cert-issuers
     targetRevision: HEAD
   destination:
-    name: in-cluster
-    namespace: argocd
+    name: newyork
+    namespace: cert-manager
   syncPolicy:
     automated:
       prune: true

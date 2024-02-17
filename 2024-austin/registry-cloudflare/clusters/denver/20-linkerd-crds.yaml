@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: registry
+  name: denver-linkerd-crds
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '20'
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  annotations:
-    argocd.argoproj.io/sync-wave: '0'
 spec:
   project: default
   source:
-    repoURL: https://github.com/kubefirst/navigate.git
-    path: 2024-austin/registry-test
-    targetRevision: HEAD
+    chart: linkerd-crds
+    repoURL: https://helm.linkerd.io/stable
+    targetRevision: 1.8.0
   destination:
-    name: in-cluster
-    namespace: argocd
+    name: denver
+    namespace: linkerd
   syncPolicy:
     automated:
       prune: true

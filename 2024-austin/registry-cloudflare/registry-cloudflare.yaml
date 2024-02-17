@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: registry
+  name: registry-cloudflare
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -11,8 +11,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kubefirst/navigate.git
-    path: 2024-austin/registry-test
-    targetRevision: HEAD
+    path: 2024-austin/registry
+    targetRevision: cloudflare
   destination:
     name: in-cluster
     namespace: argocd
