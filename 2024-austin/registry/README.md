@@ -78,6 +78,8 @@ username: `admin`
 
 password: (paste from your clipboard)
 
+# Bootstrap
+
 ### bootstrap the `k3d` cluster with crossplane and install the terraform provider
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
@@ -85,6 +87,10 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 
 once all bootstrap items have synced, you should see the following in argo cd
 ![](../images/bootstrap.png)
+
+# Registry
+
+![](../images/orchestration.png)
 
 ### apply the registry to provision new cloud infrastructure and bootstrap the cloud clusters
 ```sh
