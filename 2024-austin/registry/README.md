@@ -61,8 +61,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 ### watch the registry in argocd ui
 once the $cluster-infrastrucutre sync waves have completed, its a good time to get the kubeconfig files for the two clusters so we can interact with them
 ```sh
-civo k8s config --region nyc1 north --save
-civo k8s config --region lon1 south --save
+civo k8s config --region nyc1 newyork --save
+civo k8s config --region lon1 london --save
 ```
 
 ### what just happened?
@@ -74,12 +74,12 @@ we just created to new CIVO kubernetes clusters in multiple regions using Infras
 open https://metaphor.com
 ```
 
-### link the north cluster with the south
+### link the newyork cluster with the london
 this command will take the necessary information from each kubeconfig and install a `Link` resource that will allow for traffic switching using the linkerd-smi `TrafficSplit`
 ```sh
-kubectx north
-linkerd --context=south multicluster link --cluster-name south |
-  kubectl --context=north apply -f -
+kubectx newyork
+linkerd --context=london multicluster link --cluster-name london |
+  kubectl --context=newyork apply -f -
 ```
 
 ### traffic splitting between your mirrored services
@@ -88,25 +88,25 @@ cat <<EOF | kubectl apply -f -
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
-  name: north-metaphor-development-split
+  name: newyork-metaphor-development-split
   namespace: development
 spec:
-  service: north-metaphor-development
+  service: newyork-metaphor-development
   backends:
-  - service: north-metaphor-development
+  - service: newyork-metaphor-development
     weight: 0
-  - service: south-metaphor-development-south
+  - service: london-metaphor-development-london
     weight: 100
 EOF
 ```
 
-### link the south cluster with the north
+### link the london cluster with the newyork
 
 this command will take the necessary information from each kubeconfig and install a `Link` resource that will allow for traffic switching using the linkerd-smi `TrafficSplit`
 ```sh
-kubectx south
-linkerd --context=north multicluster link --cluster-name north |
-  kubectl --context=south apply -f -
+kubectx london
+linkerd --context=newyork multicluster link --cluster-name newyork |
+  kubectl --context=london apply -f -
 ```
 
 ### traffic splitting between your mirrored services
@@ -115,14 +115,14 @@ cat <<EOF | kubectl apply -f -
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
-  name: south-metaphor-development-split
+  name: london-metaphor-development-split
   namespace: development
 spec:
-  service: south-metaphor-development
+  service: london-metaphor-development
   backends:
-  - service: south-metaphor-development
+  - service: london-metaphor-development
     weight: 0
-  - service: north-metaphor-development-north
+  - service: newyork-metaphor-development-newyork
     weight: 100
 EOF
 ```
