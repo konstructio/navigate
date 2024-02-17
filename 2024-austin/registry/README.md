@@ -82,6 +82,8 @@ username: `admin`
 
 password: (paste from your clipboard)
 
+# Bootstrap
+
 ### bootstrap the `k3d` cluster with crossplane and install the terraform provider
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
@@ -89,6 +91,10 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 
 once all bootstrap items have synced, you should see the following in argo cd
 ![](../images/bootstrap.png)
+
+# Registry
+
+![](../images/orchestration.png)
 
 ### apply the registry to provision new cloud infrastructure and bootstrap the cloud clusters
 ```sh
@@ -103,6 +109,9 @@ civo k8s config --region lon1 london --save
 ```
 
 ### what just happened?
+
+![](../images/network.png)
+
 we just created to new CIVO kubernetes clusters in multiple regions using Infrastructure as Code. Once the new clusters were ready, we used the Argo CD gitops engine to install a handfull of applications to make them ready to serve application traffic on the internet leveraging your dns zone. 
 (working...)
 
