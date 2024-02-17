@@ -37,7 +37,6 @@ civo k8s config --region nyc1 denver --save
 
 #deprecated, test new provision
 # goes to development namespace in workloads
-
 apiVersion: cert-manager.k8s.cloudflare.com/v1
 kind: OriginIssuer
 metadata:
