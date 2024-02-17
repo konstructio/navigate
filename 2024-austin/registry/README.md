@@ -29,15 +29,10 @@ kubectl -n crossplane-system create secret generic crossplane-secrets \
   --from-literal=TF_VAR_civo_token=$CIVO_TOKEN
 ```
 
-### wait for argocd pods in k3d to be healthy
+### wait for argocd pods in k3d to be running
 ```sh
 watch kubectl get pods -A
 ```
-### wait for argocd pods in k3d to be healthy
-```sh
-kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
-```
-
 ### get the argocd root password
 ```sh
 kubectl -n argocd get secret/argocd-initial-admin-secret -ojsonpath='{.data.password}' | base64 -D | pbcopy
@@ -45,9 +40,15 @@ kubectl -n argocd get secret/argocd-initial-admin-secret -ojsonpath='{.data.pass
 ### visit the argocd ui
 ```sh
 kubectl -n argocd port-forward svc/argocd-server 8888:80 
+open http://localhost:8888
 ```
 
 ### bootstrap the `k3d` cluster with crossplane and install the terraform provider
+```sh
+kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
+```
+
+### apply the registry to provision new cloud infrastructure and bootstrap the cloud clusters
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry/registry.yaml
 ```
