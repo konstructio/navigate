@@ -46,7 +46,7 @@ kubectl -n crossplane-system create secret generic crossplane-secrets \
   --from-literal=TF_VAR_civo_token=$CIVO_TOKEN
 ```
 
-### wait for argocd pods in k3d to be running
+### wait for all pods in k3d to be Running / Completed
 ```sh
 watch kubectl get pods -A
 ```
@@ -68,10 +68,11 @@ keystroke `Ctrl`+`c` to exit the port-forward command, and then reexecute the po
 The port-forward command above will tie up your terminal, please start a second terminal session to continue command executions. 
 
 ### login to argocd
-```
-open http://localhost:8888
-```
+
+[http://localhost:8888](http://localhost:8888)
+
 username: `admin`
+
 password: (paste from your clipboard)
 
 ### bootstrap the `k3d` cluster with crossplane and install the terraform provider
