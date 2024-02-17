@@ -1,3 +1,6 @@
+# TODO:
+- domain adjustment
+- tag
 
 # CIVO Navigate Workshops CIVO dns
 
