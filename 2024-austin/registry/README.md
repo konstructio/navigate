@@ -24,7 +24,9 @@ k3d cluster create kubefirst --agents "1" --agents-memory "4096m" \
 ### add your `CIVO_TOKEN` for provisioning cloud infrastructure
 The `CIVO_TOKEN` will be used by the crossplane terraform provider to allow for provisioning of CIVO cloud infrastructure as well as for external-dns to create and adjust DNS records in your CIVO cloud account.
 ```sh
-kubectl -n crossplane-system create secret generic crossplane-secrets --from-literal=CIVO_TOKEN=$CIVO_TOKEN --from-literal=TF_VAR_civo_token=$CIVO_TOKEN
+kubectl -n crossplane-system create secret generic crossplane-secrets \
+  --from-literal=CIVO_TOKEN=$CIVO_TOKEN \
+  --from-literal=TF_VAR_civo_token=$CIVO_TOKEN
 ```
 
 ### wait for argocd pods in k3d to be healthy
