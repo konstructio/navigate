@@ -2,11 +2,21 @@
 # CIVO Navigate Workshops CIVO dns
 
 ### prerequisites
-- k3d
+- k3d: 
+    purpose: local kubernetes
+    install: `brew install k3d`
+- watch:
+    purpose: repeat a command to watch resources
+    install: `brew install watch`
 - kubectl
+    purpose: interact with kubernetes
+    install: `brew install kubectl`
 - linkerd
-- civo token
-- dns
+    purpose: cli for linkerd control plane
+    install: `brew install linkerd`
+- civo account
+    - set nameserver records at your domain registrar to `ns0.civo.com` and `ns1.civo.com`
+    - add your domain in your [civo dns](https://dashboard.civo.com/dns)
 
 ### clone the `navigate` git repository
 ```sh
@@ -17,8 +27,10 @@ cd navigate
 ### create a local `k3d` cluster to provision cloud infrastructure with gitops
 We'll provision a local k3d cluster that will need a `CIVO_TOKEN` added as a kubernetes secret. This `k3d` cluster will also have a few additional [manifests](../manifests/bootstrap-k3d.yaml) that install argocd to the new cluster with a few default configurations we'll take advantage of.
 ```sh
-k3d cluster create kubefirst --agents "1" --agents-memory "4096m" \
-    --volume $PWD/2024-austin/manifests/bootstrap-k3d.yaml:/var/lib/rancher/k3s/server/manifests/bootstrap-k3d.yaml
+k3d cluster create kubefirst \
+  --agents "1" \
+  --agents-memory "4096m" \
+  --volume $PWD/2024-austin/manifests/bootstrap-k3d.yaml:/var/lib/rancher/k3s/server/manifests/bootstrap-k3d.yaml
 ```
 
 ### export your `CIVO_TOKEN` for provisioning cloud infrastructure
