@@ -105,6 +105,9 @@ civo k8s config --region lon1 london --save
 ```
 
 ### what just happened?
+
+![](../images/network.png)
+
 we just created to new CIVO kubernetes clusters in multiple regions using Infrastructure as Code. Once the new clusters were ready, we used the Argo CD gitops engine to install a handfull of applications to make them ready to serve application traffic on the internet leveraging your dns zone. 
 (working...)
 
