@@ -46,7 +46,7 @@ kubectl -n crossplane-system create secret generic crossplane-secrets \
   --from-literal=TF_VAR_civo_token=$CIVO_TOKEN
 ```
 
-### wait for argocd pods in k3d to be running
+### wait for all pods in k3d to be Running / Completed
 ```sh
 watch kubectl get pods -A
 ```
