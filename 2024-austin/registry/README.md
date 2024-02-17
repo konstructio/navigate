@@ -2,11 +2,27 @@
 # CIVO Navigate Workshops CIVO dns
 
 ### prerequisites
-- k3d
+- k3d: 
+    purpose: local kubernetes
+    install: `brew install k3d`
+- watch:
+    purpose: repeat a command to watch resources
+    install: `brew install watch`
 - kubectl
+    purpose: interact with kubernetes
+    install: `brew install kubectl`
 - linkerd
-- civo token
-- dns
+    purpose: cli for linkerd control plane
+    install: `brew install linkerd`
+- pbcopy
+    purpose: copy command results to the clipboard
+    install: `brew install pbcopy`
+- base64
+    purpose: string encoding
+    install: `brew install coreutils`
+- civo account
+    - set nameserver records at your domain registrar to `ns0.civo.com` and `ns1.civo.com`
+    - add your domain in your [civo dns](https://dashboard.civo.com/dns)
 
 ### clone the `navigate` git repository
 ```sh
@@ -17,8 +33,10 @@ cd navigate
 ### create a local `k3d` cluster to provision cloud infrastructure with gitops
 We'll provision a local k3d cluster that will need a `CIVO_TOKEN` added as a kubernetes secret. This `k3d` cluster will also have a few additional [manifests](../manifests/bootstrap-k3d.yaml) that install argocd to the new cluster with a few default configurations we'll take advantage of.
 ```sh
-k3d cluster create kubefirst --agents "1" --agents-memory "4096m" \
-    --volume $PWD/2024-austin/manifests/bootstrap-k3d.yaml:/var/lib/rancher/k3s/server/manifests/bootstrap-k3d.yaml
+k3d cluster create kubefirst \
+  --agents "1" \
+  --agents-memory "4096m" \
+  --volume $PWD/2024-austin/manifests/bootstrap-k3d.yaml:/var/lib/rancher/k3s/server/manifests/bootstrap-k3d.yaml
 ```
 
 ### export your `CIVO_TOKEN` for provisioning cloud infrastructure
@@ -38,15 +56,29 @@ kubectl -n crossplane-system create secret generic crossplane-secrets \
 ```sh
 watch kubectl get pods -A
 ```
-### get the argocd root password
+note: use keystroke `Ctrl`+`c` to exit the watch command
+
+### copy the argocd root password to your clipboard
 ```sh
 kubectl -n argocd get secret/argocd-initial-admin-secret -ojsonpath='{.data.password}' | base64 -D | pbcopy
 ```
-### visit the argocd ui
+
+### port-forward to argocd ui
 ```sh
 kubectl -n argocd port-forward svc/argocd-server 8888:80 
+```
+
+If Argo CD becomes unresponsive in your browser at any time, you will need to refresh your port-forward. To do so, use 
+keystroke `Ctrl`+`c` to exit the port-forward command, and then reexecute the port-forward command
+
+The port-forward command above will tie up your terminal, please start a second terminal session to continue command executions. 
+
+### login to argocd
+```
 open http://localhost:8888
 ```
+username: `admin`
+password: (paste from your clipboard)
 
 ### bootstrap the `k3d` cluster with crossplane and install the terraform provider
 ```sh
