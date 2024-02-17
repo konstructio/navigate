@@ -36,6 +36,10 @@ k3d cluster create kubefirst \
   --volume $PWD/2024-austin/manifests/bootstrap-k3d.yaml:/var/lib/rancher/k3s/server/manifests/bootstrap-k3d.yaml
 ```
 
+The result will be a local bootstrap k3d cluster with the necessary components for app and infrastructure management.
+
+![](../images/bootstrap-k3d.png)
+
 ### export your `CIVO_TOKEN` for provisioning cloud infrastructure
 Replace the x's with your actual API Key. It's available on your [profile security page](https://dashboard.civo.com/security) in your Civo account.
 ```sh
