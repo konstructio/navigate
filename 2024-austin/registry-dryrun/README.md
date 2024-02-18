@@ -6,6 +6,7 @@
 # CIVO Navigate Workshops CIVO dns
 
 ### prerequisites
+
 - k3d: local kubernetes
     - install: `brew install k3d`
 - watch: repeat a command to watch resources
@@ -23,12 +24,14 @@
     - add your domain in your [civo dns](https://dashboard.civo.com/dns)
 
 ### clone the `navigate` git repository
+
 ```sh
 git clone https://github.com/kubefirst/navigate
 cd navigate
 ```
 
 ### create a local `k3d` cluster to provision cloud infrastructure with gitops
+
 We'll provision a local k3d cluster that will need a `CIVO_TOKEN` added as a kubernetes secret. This `k3d` cluster will also have a few additional [manifests](../manifests/bootstrap-k3d.yaml) that install argocd to the new cluster with a few default configurations we'll take advantage of.
 ```sh
 k3d cluster create kubefirst \
@@ -42,6 +45,7 @@ The result will be a local bootstrap k3d cluster with the necessary components f
 <img src="../images/bootstrap-k3d.png" width="400">
 
 ### export your `CIVO_TOKEN` for provisioning cloud infrastructure
+
 Replace the x's with your actual API Key. It's available on your [profile security page](https://dashboard.civo.com/security) in your Civo account.
 ```sh
 export CIVO_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -55,17 +59,20 @@ kubectl -n crossplane-system create secret generic crossplane-secrets \
 ```
 
 ### wait for all pods in k3d to be Running / Completed
+
 ```sh
 watch kubectl get pods -A
 ```
 note: use keystroke `Ctrl`+`c` to exit the watch command
 
 ### copy the argocd root password to your clipboard
+
 ```sh
 kubectl -n argocd get secret/argocd-initial-admin-secret -ojsonpath='{.data.password}' | base64 -D | pbcopy
 ```
 
 ### port-forward to argocd ui
+
 ```sh
 kubectl -n argocd port-forward svc/argocd-server 8888:80 
 ```
@@ -86,6 +93,7 @@ password: (paste from your clipboard)
 # Bootstrap
 
 ### bootstrap the `k3d` cluster with crossplane and install the terraform provider
+
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
 ```
@@ -95,15 +103,22 @@ once all bootstrap items have synced, you should see the following in argo cd
 
 # Registry
 
-![](../images/orchestration.png)
+
+### explore the registry folder structure
+
+<img src="../images/folder-structure.png" width="400">
 
 ### apply the registry to provision new cloud infrastructure and bootstrap the cloud clusters
+
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry-dryrun/registry.yaml
 ```
 
+![](../images/orchestration.png)
+
 ### watch the registry in argocd ui
-once the $cluster-infrastrucutre sync waves have completed, its a good time to get the kubeconfig files for the two clusters so we can interact with them
+
+once the cluster-infrastrucutre sync waves have completed, its a good time to get the kubeconfig files for the two clusters so we can interact with them
 ```sh
 civo k8s config --region nyc1 austin --save
 civo k8s config --region fra1 frankfurt --save
@@ -117,11 +132,13 @@ we just created to new CIVO kubernetes clusters in multiple regions using Infras
 (working...)
 
 ### explore metaphor, your new demo application running in both clusters
+
 ```sh
 open https://metaphor.com
 ```
 
 ### link the austin cluster with the frankfurt
+
 this command will take the necessary information from each kubeconfig and install a `Link` resource that will allow for traffic switching using the linkerd-smi `TrafficSplit`
 ```sh
 kubectx austin
@@ -130,6 +147,7 @@ linkerd --context=frankfurt multicluster link --cluster-name frankfurt |
 ```
 
 ### traffic splitting between your mirrored services
+
 ```sh
 cat <<EOF | kubectl apply -f -
 apiVersion: split.smi-spec.io/v1alpha2
@@ -157,6 +175,7 @@ linkerd --context=austin multicluster link --cluster-name austin |
 ```
 
 ### traffic splitting between your mirrored services
+
 ```sh
 cat <<EOF | kubectl apply -f -
 apiVersion: split.smi-spec.io/v1alpha2
