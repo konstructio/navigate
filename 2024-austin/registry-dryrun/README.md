@@ -171,6 +171,23 @@ spec:
 EOF
 ```
 
+```sh
+cat <<EOF | kubectl apply -f -
+apiVersion: split.smi-spec.io/v1alpha2
+kind: TrafficSplit
+metadata:
+  name: austin-metaphor-development-split
+  namespace: development
+spec:
+  service: austin-metaphor-development
+  backends:
+  - service: austin-metaphor-development
+    weight: 50
+  - service: frankfurt-metaphor-development-frankfurt
+    weight: 50
+EOF
+```
+
 ### link the frankfurt cluster with the austin
 
 this command will take the necessary information from each kubeconfig and install a `Link` resource that will allow for traffic switching using the linkerd-smi `TrafficSplit`

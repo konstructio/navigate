@@ -16,14 +16,14 @@ metaphor:
         paths:
           - path: /
             pathType: Prefix
-      # - host: metaphor.kubefirst.boo
-      #   paths:
-      #     - path: /
-      #       pathType: Prefix
+      - host: metaphor.kubefirst.boo
+        paths:
+          - path: /
+            pathType: Prefix
     tls:
       - secretName: metaphor-tls
         hosts:
-          # - metaphor.kubefirst.boo
+          - metaphor.kubefirst.boo
           - metaphor-frankfurt.kubefirst.boo
   metaphor:
     host: https://metaphor-frankfurt.kubefirst.boo/api
