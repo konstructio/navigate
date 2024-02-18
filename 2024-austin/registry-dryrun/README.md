@@ -118,7 +118,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 
 ### watch the registry in argocd ui
 
-once the cluster-infrastrucutre sync waves have completed, its a good time to get the kubeconfig files for the two clusters so we can interact with them
+once the cluster-infrastructure sync waves have completed, its a good time to get the kubeconfig files for the two clusters so we can interact with them
 ```sh
 civo k8s config --region nyc1 austin --save
 civo k8s config --region fra1 frankfurt --save
@@ -144,6 +144,12 @@ this command will take the necessary information from each kubeconfig and instal
 kubectx austin
 linkerd --context=frankfurt multicluster link --cluster-name frankfurt |
   kubectl --context=austin apply -f -
+```
+
+### check the new mirrored service in the `frankfurt` cluster
+
+```sh
+kubectl -n development get service
 ```
 
 ### traffic splitting between your mirrored services
