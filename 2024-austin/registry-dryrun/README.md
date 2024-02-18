@@ -116,6 +116,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 
 ![](../images/orchestration.png)
 
+![](../images/metaphor-config.png)
+
 ### watch the registry in argocd ui
 
 once the cluster-infrastructure sync waves have completed, its a good time to get the kubeconfig files for the two clusters so we can interact with them
@@ -126,7 +128,7 @@ civo k8s config --region fra1 frankfurt --save
 
 ### what just happened?
 
-![](../images/network.png)
+#### lets visit the slide deck
 
 we just created to new CIVO kubernetes clusters in multiple regions using Infrastructure as Code. Once the new clusters were ready, we used the Argo CD gitops engine to install a handfull of applications to make them ready to serve application traffic on the internet leveraging your dns zone. 
 (working...)
