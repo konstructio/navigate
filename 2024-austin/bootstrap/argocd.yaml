@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/kubefirst/navigate
     path: 2024-austin/bootstrap/argocd
-    targetRevision: HEAD
+    targetRevision: manage-argocd
   destination:
     name: in-cluster
     namespace: crossplane-system

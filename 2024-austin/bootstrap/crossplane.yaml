@@ -4,7 +4,7 @@ metadata:
   name: crossplane-components
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: '0'
+    argocd.argoproj.io/sync-wave: '10'
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/kubefirst/navigate
     path: 2024-austin/bootstrap/crossplane
-    targetRevision: HEAD
+    targetRevision: manage-argocd
   destination:
     name: in-cluster
     namespace: crossplane-system
