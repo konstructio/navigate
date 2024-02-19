@@ -69,6 +69,12 @@ note: use keystroke `Ctrl`+`c` to exit the watch command
 kubectl -n argocd port-forward svc/argocd-server 8888:80 
 ```
 
+### open a new terminal and set the `KUBECONFIG` environment variable
+
+```sh
+export KUBECONFIG=$(k3d kubeconfig write kubefirst)
+```
+
 ### copy the argocd root password to your clipboard
 
 ```sh
