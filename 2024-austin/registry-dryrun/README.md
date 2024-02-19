@@ -155,7 +155,9 @@ linkerd --context=frankfurt multicluster link --cluster-name frankfurt |
 kubectl -n development get service
 ```
 
-### traffic splitting between your mirrored services
+# traffic splitting between your mirrored services
+
+### only serve traffic from the frankfurt cluster service through the austin cluster ingress 
 
 ```sh
 cat <<EOF | kubectl apply -f -
@@ -173,6 +175,9 @@ spec:
     weight: 100
 EOF
 ```
+
+
+### split traffic 50/50 between the austin and frankfurt services through the austin ingress 
 
 ```sh
 cat <<EOF | kubectl apply -f -
@@ -200,8 +205,11 @@ linkerd --context=austin multicluster link --cluster-name austin |
   kubectl --context=frankfurt apply -f -
 ```
 
-### traffic splitting between your mirrored services
+# traffic splitting between your mirrored services
 
+### only serve traffic from the austin cluster service through the frankfurt cluster ingress 
+
+### only serve the austin
 ```sh
 cat <<EOF | kubectl apply -f -
 apiVersion: split.smi-spec.io/v1alpha2
@@ -216,5 +224,23 @@ spec:
     weight: 0
   - service: austin-metaphor-development-austin
     weight: 100
+EOF
+```
+### split traffic 50/50 between the frankfurt and austin services through the frankfurt ingress 
+
+```sh
+cat <<EOF | kubectl apply -f -
+apiVersion: split.smi-spec.io/v1alpha2
+kind: TrafficSplit
+metadata:
+  name: frankfurt-metaphor-development-split
+  namespace: development
+spec:
+  service: frankfurt-metaphor-development
+  backends:
+  - service: frankfurt-metaphor-development
+    weight: 50
+  - service: austin-metaphor-development-austin
+    weight: 50
 EOF
 ```
