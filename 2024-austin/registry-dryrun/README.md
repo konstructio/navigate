@@ -42,8 +42,6 @@ k3d cluster create kubefirst \
 
 The result will be a local bootstrap k3d cluster with the necessary components for app and infrastructure management.
 
-<img src="../images/bootstrap-k3d.png" width="400">
-
 ### export your `CIVO_TOKEN` for provisioning cloud infrastructure
 
 Replace the x's with your actual API Key. It's available on your [profile security page](https://dashboard.civo.com/security) in your Civo account.
@@ -97,6 +95,8 @@ password: (paste from your clipboard)
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
 ```
+
+<img src="../images/bootstrap-k3d.png" width="400">
 
 once all bootstrap items have synced, you should see the following in argo cd
 ![](../images/bootstrap.png)
