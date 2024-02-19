@@ -99,7 +99,7 @@ password: (paste from your clipboard)
 ### bootstrap the `k3d` cluster with crossplane and install the terraform provider
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/manage-argocd/2024-austin/bootstrap/bootstrap.yaml
 ```
 
 <img src="../images/bootstrap-k3d.png" width="400">
