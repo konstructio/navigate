@@ -63,16 +63,16 @@ watch kubectl get pods -A
 ```
 note: use keystroke `Ctrl`+`c` to exit the watch command
 
-### copy the argocd root password to your clipboard
-
-```sh
-kubectl -n argocd get secret/argocd-initial-admin-secret -ojsonpath='{.data.password}' | base64 -D | pbcopy
-```
-
 ### port-forward to argocd ui
 
 ```sh
 kubectl -n argocd port-forward svc/argocd-server 8888:80 
+```
+
+### copy the argocd root password to your clipboard
+
+```sh
+kubectl -n argocd get secret/argocd-initial-admin-secret -ojsonpath='{.data.password}' | base64 -D | pbcopy
 ```
 
 If Argo CD becomes unresponsive in your browser at any time, you will need to refresh your port-forward. To do so, use 
@@ -93,7 +93,7 @@ password: (paste from your clipboard)
 ### bootstrap the `k3d` cluster with crossplane and install the terraform provider
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/manage-argocd/2024-austin/bootstrap/bootstrap.yaml
 ```
 
 <img src="../images/bootstrap-k3d.png" width="400">
