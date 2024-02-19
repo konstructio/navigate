@@ -63,16 +63,22 @@ watch kubectl get pods -A
 ```
 note: use keystroke `Ctrl`+`c` to exit the watch command
 
-### copy the argocd root password to your clipboard
-
-```sh
-kubectl -n argocd get secret/argocd-initial-admin-secret -ojsonpath='{.data.password}' | base64 -D | pbcopy
-```
-
 ### port-forward to argocd ui
 
 ```sh
 kubectl -n argocd port-forward svc/argocd-server 8888:80 
+```
+
+### open a new terminal and set the `KUBECONFIG` environment variable
+
+```sh
+export KUBECONFIG=$(k3d kubeconfig write kubefirst)
+```
+
+### copy the argocd root password to your clipboard
+
+```sh
+kubectl -n argocd get secret/argocd-initial-admin-secret -ojsonpath='{.data.password}' | base64 -D | pbcopy
 ```
 
 If Argo CD becomes unresponsive in your browser at any time, you will need to refresh your port-forward. To do so, use 
