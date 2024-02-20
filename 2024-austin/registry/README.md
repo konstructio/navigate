@@ -134,9 +134,13 @@ civo k8s config --region lon1 london --save
 We just created to new CIVO kubernetes clusters in multiple regions using Infrastructure as Code. Once the new clusters were ready, we used the Argo CD gitops engine to install a handfull of applications to make them capable of serving traffic on the internet, with short lived tls certificates, leveraging your dns zone. The two clusters are prepared with multicluster linkerd service mesh which we'll focus on through this workshop.
 
 ### explore metaphor, your new demo application running in both clusters
-```sh
-open https://metaphor.com
-```
+
+[https://metaphor-newyork.gitopsmagic.com](https://metaphor-newyork.gitopsmagic.com)
+
+[https://metaphor.gitopsmagic.com](https://metaphor.gitopsmagic.com)
+
+[https://metaphor-london.gitopsmagic.com](https://metaphor-london.gitopsmagic.com)
+
 
 ### 3.3 link the newyork cluster with the london cluster
 this command will take the necessary information from each kubeconfig and install a `Link` resource that will allow for traffic switching using the linkerd-smi `TrafficSplit`
