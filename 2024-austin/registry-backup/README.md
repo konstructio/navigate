@@ -130,8 +130,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 
 once the cluster-infrastructure sync waves have completed, its a good time to get the kubeconfig files for the two clusters so we can interact with them
 ```sh
-civo k8s config --region nyc1 denver --save
-civo k8s config --region fra1 dublin --save
+civo k8s config --region nyc1 austin --save
+civo k8s config --region fra1 frankfurt --save
 ```
 
 ### what just happened?
@@ -146,16 +146,16 @@ we just created to new CIVO kubernetes clusters in multiple regions using Infras
 open https://metaphor.com
 ```
 
-### link the denver cluster with the dublin
+### link the austin cluster with the frankfurt
 
 this command will take the necessary information from each kubeconfig and install a `Link` resource that will allow for traffic switching using the linkerd-smi `TrafficSplit`
 ```sh
-kubectx denver
-linkerd --context=dublin multicluster link --cluster-name dublin |
-  kubectl --context=denver apply -f -
+kubectx austin
+linkerd --context=frankfurt multicluster link --cluster-name frankfurt |
+  kubectl --context=austin apply -f -
 ```
 
-### check the new mirrored service in the `dublin` cluster
+### check the new mirrored service in the `frankfurt` cluster
 
 ```sh
 kubectl -n development get service
@@ -163,90 +163,90 @@ kubectl -n development get service
 
 # traffic splitting between your mirrored services
 
-### only serve traffic from the dublin cluster service through the denver cluster ingress 
+### only serve traffic from the frankfurt cluster service through the austin cluster ingress 
 
 ```sh
 cat <<EOF | kubectl apply -f -
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
-  name: denver-metaphor-development-split
+  name: austin-metaphor-development-split
   namespace: development
 spec:
-  service: denver-metaphor-development
+  service: austin-metaphor-development
   backends:
-  - service: denver-metaphor-development
+  - service: austin-metaphor-development
     weight: 0
-  - service: dublin-metaphor-development-dublin
+  - service: frankfurt-metaphor-development-frankfurt
     weight: 100
 EOF
 ```
 
 
-### split traffic 50/50 between the denver and dublin services through the denver ingress 
+### split traffic 50/50 between the austin and frankfurt services through the austin ingress 
 
 ```sh
 cat <<EOF | kubectl apply -f -
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
-  name: denver-metaphor-development-split
+  name: austin-metaphor-development-split
   namespace: development
 spec:
-  service: denver-metaphor-development
+  service: austin-metaphor-development
   backends:
-  - service: denver-metaphor-development
+  - service: austin-metaphor-development
     weight: 50
-  - service: dublin-metaphor-development-dublin
+  - service: frankfurt-metaphor-development-frankfurt
     weight: 50
 EOF
 ```
 
-### link the dublin cluster with the denver
+### link the frankfurt cluster with the austin
 
 this command will take the necessary information from each kubeconfig and install a `Link` resource that will allow for traffic switching using the linkerd-smi `TrafficSplit`
 ```sh
-kubectx dublin
-linkerd --context=denver multicluster link --cluster-name denver |
-  kubectl --context=dublin apply -f -
+kubectx frankfurt
+linkerd --context=austin multicluster link --cluster-name austin |
+  kubectl --context=frankfurt apply -f -
 ```
 
 # traffic splitting between your mirrored services
 
-### only serve traffic from the denver cluster service through the dublin cluster ingress 
+### only serve traffic from the austin cluster service through the frankfurt cluster ingress 
 
-### only serve the denver
+### only serve the austin
 ```sh
 cat <<EOF | kubectl apply -f -
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
-  name: dublin-metaphor-development-split
+  name: frankfurt-metaphor-development-split
   namespace: development
 spec:
-  service: dublin-metaphor-development
+  service: frankfurt-metaphor-development
   backends:
-  - service: dublin-metaphor-development
+  - service: frankfurt-metaphor-development
     weight: 0
-  - service: denver-metaphor-development-denver
+  - service: austin-metaphor-development-austin
     weight: 100
 EOF
 ```
-### split traffic 50/50 between the dublin and denver services through the dublin ingress 
+### split traffic 50/50 between the frankfurt and austin services through the frankfurt ingress 
 
 ```sh
 cat <<EOF | kubectl apply -f -
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
-  name: dublin-metaphor-development-split
+  name: frankfurt-metaphor-development-split
   namespace: development
 spec:
-  service: dublin-metaphor-development
+  service: frankfurt-metaphor-development
   backends:
-  - service: dublin-metaphor-development
+  - service: frankfurt-metaphor-development
     weight: 50
-  - service: denver-metaphor-development-denver
+  - service: austin-metaphor-development-austin
     weight: 50
 EOF
 ```
