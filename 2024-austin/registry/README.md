@@ -1,8 +1,3 @@
-# TODO:
-- domain adjustment
-- tag
-- vanity dns on newyork / denver 
-
 # Civo Navigate Workshop - Civo DNS variation
 
 ## Step 1: Workshop Setup 
