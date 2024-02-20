@@ -1,0 +1,34 @@
+metaphor:
+  annotations:
+    linkerd.io/inject: "enabled"
+  labels:
+    mirror.linkerd.io/exported: "true"
+  image:
+    tag: 0.1.0-2024-navigate-denver
+  ingress:
+    className: nginx
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: 'letsencrypt-prod'
+      nginx.ingress.kubernetes.io/service-upstream: "true"
+    hosts:
+      - host: metaphor-denver.gitops.biz
+        paths:
+          - path: /
+            pathType: Prefix
+      - host: metaphor.gitops.biz
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: metaphor-tls
+        hosts:
+          - metaphor.gitops.biz
+          - metaphor-denver.gitops.biz
+  metaphor:
+    host: https://metaphor-denver.gitops.biz/api
+    console: https://kubefirst.gitops.biz
+  useExternalSecret: false
+  configs:
+    configOne: denver-cluster-override-one
+    configTwo: denver-cluster-override-two
