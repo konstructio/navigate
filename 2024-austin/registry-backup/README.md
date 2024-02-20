@@ -37,7 +37,7 @@ We'll provision a local k3d cluster that will need a `CIVO_TOKEN` added as a kub
 k3d cluster create kubefirst \
   --agents "1" \
   --agents-memory "4096m" \
-  --volume $PWD/2024-denver/manifests/bootstrap-k3d.yaml:/var/lib/rancher/k3s/server/manifests/bootstrap-k3d.yaml
+  --volume $PWD/2024-austin/manifests/bootstrap-k3d.yaml:/var/lib/rancher/k3s/server/manifests/bootstrap-k3d.yaml
 ```
 
 The result will be a local bootstrap k3d cluster with the necessary components for app and infrastructure management.
@@ -99,7 +99,7 @@ password: (paste from your clipboard)
 ### bootstrap the `k3d` cluster with crossplane and install the terraform provider
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-denver/bootstrap/bootstrap.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/bootstrap/bootstrap.yaml
 ```
 
 <img src="../images/bootstrap-k3d.png" width="400">
@@ -117,7 +117,7 @@ once all bootstrap items have synced, you should see the following in argo cd
 ### apply the registry to provision new cloud infrastructure and bootstrap the cloud clusters
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-denver/registry-backup/registry.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry-backup/registry.yaml
 ```
 
 ![](../images/orchestration.png)

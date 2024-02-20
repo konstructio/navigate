@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kubefirst/navigate.git
-    path: 2024-denver/registry-backup
+    path: 2024-austin/registry-backup
     targetRevision: HEAD
   destination:
     name: in-cluster

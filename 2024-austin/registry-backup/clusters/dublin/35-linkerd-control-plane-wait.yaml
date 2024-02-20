@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kubefirst/navigate
-    path: 2024-denver/registry-backup/clusters/dublin/linkerd-control-plane-wait
+    path: 2024-austin/registry-backup/clusters/dublin/linkerd-control-plane-wait
     targetRevision: HEAD
   destination:
     name: in-cluster
