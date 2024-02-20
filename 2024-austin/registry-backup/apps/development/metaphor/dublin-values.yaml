@@ -12,23 +12,24 @@ metaphor:
       cert-manager.io/cluster-issuer: 'letsencrypt-prod'
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts:
-      - host: metaphor-newyork.gitopsmagic.com
+      - host: metaphor-dublin.kubefast.com
         paths:
           - path: /
             pathType: Prefix
-      - host: metaphor.gitopsmagic.com
-        paths:
-          - path: /
-            pathType: Prefix
+      # - host: metaphor.kubefast.com
+      #   paths:
+      #     - path: /
+      #       pathType: Prefix
     tls:
       - secretName: metaphor-tls
         hosts:
-          - metaphor.gitopsmagic.com
-          - metaphor-newyork.gitopsmagic.com
+          # - metaphor.kubefast.com
+          - metaphor-dublin.kubefast.com
   metaphor:
-    host: https://metaphor-newyork.gitopsmagic.com/api
-    console: https://kubefirst.gitopsmagic.com
+    host: https://metaphor-dublin.kubefast.com/api
+    console: https://kubefirst.kubefast.com
+  
   useExternalSecret: false
   configs:
-    configOne: newyork-cluster-override-one
-    configTwo: newyork-cluster-override-two
+    configOne: dublin-cluster-override-one
+    configTwo: dublin-cluster-override-two

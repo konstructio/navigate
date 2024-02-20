@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: london-external-dns
+  name: denver-external-dns
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: '50'
@@ -22,16 +22,19 @@ spec:
         sources:
         - ingress
         domainFilters:
-        - gitopsmagic.com
+        - kubefast.com
         env:
         - name: CIVO_TOKEN
           valueFrom:
             secretKeyRef:
               name: external-dns-secrets
               key: token
+        # extraArgs:
+        # - --txt-owner-id=denver
+        # - --txt-prefix=denver.
     chart: external-dns
   destination:
-    name: london
+    name: denver
     namespace: external-dns
   syncPolicy:
     automated:
