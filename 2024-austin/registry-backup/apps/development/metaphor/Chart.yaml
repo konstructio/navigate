@@ -2,7 +2,7 @@ apiVersion: v2
 dependencies:
   - name: metaphor
     repository: https://charts.kubefirst.com
-    version: 0.5.0-2024-navigate-denver
+    version: 0.5.0-2024-navigate-austin
 description: metaphor example application
 name: metaphor-development
 type: application
