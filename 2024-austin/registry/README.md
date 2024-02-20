@@ -184,7 +184,6 @@ spec:
   - service: london-metaphor-development-london
     weight: 50
 EOF
-```
 
 ![](../images/network-5050.png)
 
