@@ -16,14 +16,14 @@ metaphor:
         paths:
           - path: /
             pathType: Prefix
-      # - host: metaphor.kubefast.com
-      #   paths:
-      #     - path: /
-      #       pathType: Prefix
+      - host: metaphor.kubefast.com
+        paths:
+          - path: /
+            pathType: Prefix
     tls:
       - secretName: metaphor-tls
         hosts:
-          # - metaphor.kubefast.com
+          - metaphor.kubefast.com
           - metaphor-dublin.kubefast.com
   metaphor:
     host: https://metaphor-dublin.kubefast.com/api
