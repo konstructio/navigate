@@ -22,16 +22,13 @@ spec:
         sources:
         - ingress
         domainFilters:
-        - freegitopsmagic.com
+        - gitopsmagic.com
         env:
         - name: CIVO_TOKEN
           valueFrom:
             secretKeyRef:
               name: external-dns-secrets
               key: token
-        # extraArgs:
-        # - --txt-owner-id=newyork
-        # - --txt-prefix=newyork.
     chart: external-dns
   destination:
     name: newyork
