@@ -12,22 +12,22 @@ metaphor:
       cert-manager.io/cluster-issuer: 'letsencrypt-prod'
       nginx.ingress.kubernetes.io/service-upstream: "true"
     hosts:
-      - host: metaphor-denver.gitops.biz
+      - host: metaphor-denver.kubefast.com
         paths:
           - path: /
             pathType: Prefix
-      - host: metaphor.gitops.biz
+      - host: metaphor.kubefast.com
         paths:
           - path: /
             pathType: Prefix
     tls:
       - secretName: metaphor-tls
         hosts:
-          - metaphor.gitops.biz
-          - metaphor-denver.gitops.biz
+          - metaphor.kubefast.com
+          - metaphor-denver.kubefast.com
   metaphor:
-    host: https://metaphor-denver.gitops.biz/api
-    console: https://kubefirst.gitops.biz
+    host: https://metaphor-denver.kubefast.com/api
+    console: https://kubefirst.kubefast.com
   useExternalSecret: false
   configs:
     configOne: denver-cluster-override-one
