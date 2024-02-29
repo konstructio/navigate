@@ -171,7 +171,7 @@ EOF
 ```
 
 ### 3.5 change traffic 50/50 between the newyork and london services
-
+```sh
 cat <<EOF | kubectl apply -f -
 apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
@@ -186,7 +186,7 @@ spec:
   - service: london-metaphor-development-london
     weight: 50
 EOF
-
+```
 ![](../images/network-5050.png)
 
 ### 3.6 link the frankfurt cluster with the austin for failover
