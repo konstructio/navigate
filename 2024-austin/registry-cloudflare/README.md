@@ -53,7 +53,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-
 
 ### apply the registry to provision new cloud infrastructure and bootstrap the cloud clusters
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry/registry.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubefirst/navigate/main/2024-austin/registry-cloudflare/registry.yaml
 ```
 
 ### watch the registry in argocd ui
