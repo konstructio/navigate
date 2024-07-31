@@ -12,7 +12,7 @@
 #   source:
 #     repoURL: https://github.com/kubefirst/navigate.git
 #     path: 2024-austin/registry-cloudflare/clusters/dublin
-#     targetRevision: cloudflare
+#     targetRevision: HEAD
 #   destination:
 #     name: in-cluster
 #     namespace: argocd

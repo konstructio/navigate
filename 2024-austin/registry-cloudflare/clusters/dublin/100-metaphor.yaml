@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/kubefirst/navigate
     path: 2024-austin/registry-cloudflare/apps/development/metaphor
-    targetRevision: cloudflare
+    targetRevision: HEAD
     helm:
       valueFiles:
         - dublin-values.yaml

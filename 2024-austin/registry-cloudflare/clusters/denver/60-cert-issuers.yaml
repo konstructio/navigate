@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/kubefirst/navigate.git
     path: 2024-austin/registry-cloudflare/clusters/denver/cert-issuers
-    targetRevision: cloudflare
+    targetRevision: HEAD
   destination:
     name: denver
     namespace: cert-manager
