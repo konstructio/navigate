@@ -7,7 +7,7 @@ spec:
     name: dublin
   forProvider:
     source: Remote
-    module: git::https://github.com/kubefirst/navigate.git//2024-austin/terraform/modules/cluster-cloudflare?ref=cloudflare
+    module: git::https://github.com/kubefirst/navigate.git//2024-austin/terraform/modules/cluster-cloudflare?ref=main
     vars:
     - key: cluster_name
       value: dublin
